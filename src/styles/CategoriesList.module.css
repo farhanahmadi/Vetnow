@@ -1,0 +1,165 @@
+@font-face {
+    font-family: "sansiran";
+    src: url(../fonts//Sansiran.ttf);
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.main{
+    width: calc(calc(400% / 5) - 20px);
+    margin-top: 50px;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tableHeader{
+    background-color: #F7F7F7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 70%;
+    background-color: #F7F7F7;
+    border-radius: 5px;
+    padding: 10px 0px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.tableHeader a , h3{
+    margin: 0px 10px;
+    font-family: sansiran;
+}
+.tableHeader a{
+    background: none;
+    border: 1px solid #C70899;
+    color: #C70899;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+    background-color: #F7F7F7;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+tr{
+    border-bottom: 1px solid #dddddd;
+  }
+td, th {
+    
+    text-align: right;
+    padding: 10px 10px;
+    font-family: sansiran;
+
+  }
+tr:last-child{
+    border-bottom: none;
+}
+th{
+    position: relative;
+}
+th::before{
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 20px;
+    background-color: #8d8d8d;
+    left: 0;
+    top: 5px;
+}
+th:last-child::before{
+    width: 0px;
+}
+.pagination {
+    display: inline-block;
+    margin-top: 20px;
+  }
+  
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: sansiran;
+    font-weight: bold;
+    cursor: pointer;
+
+  }
+  
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+
+  }
+.arrows{
+    background-color: #d5dadf;
+    border-radius: 5px;
+    color: white;
+}
+
+
+@media only screen and (max-width: 575.98px) {
+   td,th{
+       padding: 10px 2px;
+       font-size: 10px;
+       white-space: nowrap;
+   }
+   .pagination a {
+       padding: 10px 6px;
+   }
+   .tableHeader{
+       width: 100%;
+   }
+   .tableHeader h3{
+       font-size: 14px;
+   }
+   .tableHeader button{
+       padding: 3px 4px;
+   }
+   th::before{
+    top: 8px;
+}
+  }
+
+table button{
+    background: rgb(216, 7, 7);
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: sansiran ;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 0px 5px;
+}
+table a{
+    background: #FFCC00;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: sansiran ;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 0px 5px;
+}
+  .sidebar{
+    width: calc(100% / 5);
+    height: 100vh;
+}

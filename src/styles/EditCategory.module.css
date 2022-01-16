@@ -1,0 +1,61 @@
+@font-face {
+    font-family: "iranyekan";
+    src: url(../fonts/BYekan.ttf);
+}
+.container{
+    display: flex;
+    justify-content: right;
+    font-family: iranyekan;
+}
+.main{
+    width: calc(400% / 5);
+    margin-top: 50px;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+.header{
+    width: 100%;
+}
+.header h3{
+    text-align: right;
+}
+.inputs{
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    width: 100%;
+    column-gap: 10px;
+    row-gap: 20px;
+}
+.inputs input , select{
+    border-radius: 5px;
+    border: 1px solid #bbbbbb;
+    text-align: right;
+    padding: 8px;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+    font-family: iranyekan;
+}
+.inputs input , select:focus{
+   outline: none;
+}
+.sidebar{
+    width: calc(100% / 5);
+}
+.submitBtn{
+    margin-top: 10px;
+    background: #C70899;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    font-family: iranyekan;
+    cursor: pointer;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}

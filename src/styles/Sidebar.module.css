@@ -1,0 +1,62 @@
+.sideBar{
+    text-align: right;
+    background-color: black;
+    height: 100%;
+    overflow: hidden;
+    padding-top: 50px;
+}
+.adminSideBar{
+    list-style-type: none;
+}
+.adminSideBar li{
+    font-family: sansiran;
+    margin: 5px 10px 5px 0px;
+    padding: 0 10px;
+    height: 50px;
+    transition: background-color 0.5s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.adminSideBar li:hover{
+    background-color: orange;
+}
+.adminSideBar a{
+    color: white;
+    text-decoration: none;
+}
+.adminSideBarMobile{
+    list-style-type: none;
+}
+.adminSideBarMobile li{
+    font-family: sansiran;
+    margin: 5px 10px 5px 0px;
+    padding: 0 10px;
+    height: 50px;
+    transition: background-color 0.5s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.adminSideBarMobile li:hover{
+    background-color: orange;
+}
+.adminSideBarMobile a{
+    color: white;
+    text-decoration: none;
+}
+.adminSideBarMobile{
+    display: none;
+}
+
+@media only screen and (max-width: 575.98px) {
+    .adminSideBar{
+        display: none;
+    }
+    .adminSideBarMobile{
+        display: block;
+    
+ }
+}
