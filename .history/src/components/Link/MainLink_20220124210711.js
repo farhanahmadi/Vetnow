@@ -1,0 +1,1 @@
+export const MainLink = "http://188.212.236.72/api/v1/"
