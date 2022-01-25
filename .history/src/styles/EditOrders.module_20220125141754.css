@@ -1,0 +1,109 @@
+@font-face {
+    font-family: "iranyekan";
+    src: url(../fonts/BYekan.ttf);
+}
+.container{
+    display: flex;
+    justify-content: right;
+    font-family: iranyekan;
+}
+.main{
+    width: calc(400% / 5);
+    margin-top: 50px;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+.header{
+    width: 100%;
+}
+.header h3{
+    text-align: right;
+}
+.inputs{
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    width: 100%;
+    column-gap: 10px;
+    row-gap: 20px;
+}
+.inputs input , select{
+    border-radius: 5px;
+    border: 1px solid #bbbbbb;
+    text-align: right;
+    padding: 8px;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+    font-family: iranyekan;
+}
+.inputs input , select:focus{
+   outline: none;
+}
+.labelSection{
+    display: flex;
+    flex-direction: column;
+}
+.labelSection label{
+    text-align: right;
+}
+.productNameLabel{
+   width: 100%;
+   text-align: right;
+   direction: rtl;
+   background-color: #FAFAFA;
+   border: 1px solid #bbbbbb;
+   border-radius: 10px;
+   padding: 10px;
+}
+.productNameLabel p{
+    font-weight: bold;
+    font-size: 16px;
+ }
+
+.checkBox{
+}
+.sidebar{
+    width: calc(100% / 5);
+}
+.submitBtn{
+    margin: 10px 5px 0px 5px ;
+    background: #C70899;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    font-family: iranyekan;
+    cursor: pointer;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+.delButton{
+    margin: 10px 5px 0px 5px ;
+    background: #c70808;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    font-family: iranyekan;
+    cursor: pointer;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+.btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media only screen and (max-width: 767.98px) {
+    .inputs{
+        grid-template-columns: 1fr;
+    }
+   }
+
