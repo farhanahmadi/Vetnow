@@ -1,0 +1,10 @@
+.Container{
+  background: url(../Image/ss.jpg);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginForm{
+  border: 1px solid black;
+}

@@ -1,0 +1,71 @@
+.Container{
+  background: url(../Image/ss.jpg);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 75px);
+}
+.loginForm{
+  border: 1px solid rgb(209, 209, 209);;
+  border-radius: 15px;
+  background-color: rgba(243, 243, 243, 0.5);
+  height: 550px;
+  width: 350px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  direction: rtl;
+}
+.logo{
+  text-align: center;
+}
+.logo h2{
+  text-align: right;
+  padding: 20px 10px;
+}
+.loginInputSection{
+  margin-top: 30px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.line{
+  border: 1px solid ;
+}
+.loginInputSection p{
+  padding-right: 5px;
+}
+.loginInput{
+  width: 90%;
+  padding: 12px 5px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  margin-top: 25px;
+  direction: ltr;
+  font-size: 1.5em;
+}
+.loginInput:focus{
+  outline: none;
+  border: 1px solid #008eb2;
+}
+.submitBtn{
+  margin-top: 30px;
+  padding: 8px 50px;
+  border-radius: 10px;
+  background-color: #232F3F;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.register{
+  text-align: center;
+  margin-top: 20px;
+}
+.register p , a{
+  font-size: 18px;
+  color: rgb(2, 115, 245);
+  
+}

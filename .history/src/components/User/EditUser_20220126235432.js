@@ -1,6 +1,6 @@
 import React,{useState , useEffect} from 'react'
 import styles from "../styles/EditUser.module.css"
-import Sidebar from './Sidebar'
+import Sidebar from '../Sidebar'
 import axios
  from 'axios'
 const EditUser = (props) => {
