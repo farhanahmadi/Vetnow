@@ -1,0 +1,124 @@
+.container{
+    display: flex;
+    justify-content: right;
+    font-family: iranyekan;
+}
+
+.main{
+    width: calc(400% / 5);
+    margin-top: 50px;
+    padding: 20px;
+}
+.sidebar{
+    width: calc(100% / 5);
+}
+.header{
+    width: 100%;
+}
+.header h3{
+    text-align: right;
+}
+.inputs{
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    width: 100%;
+    column-gap: 10px;
+    row-gap: 20px;
+}
+.inputs input , select{
+    border-radius: 5px;
+    border: 1px solid #bbbbbb;
+    text-align: right;
+    padding: 8px;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+    font-family: iranyekan;
+}
+.inputs input , select:focus{
+   outline: none;
+}
+.productsImg{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.productsImg h5{
+    text-align: right;
+    font-size: 14px;
+    color: #8f8f8f;
+    font-weight: bold;
+}
+
+.divImg{
+    width: 150px;
+    height: 150px;
+    border: 1px solid #bbbbbb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.imageContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 16px;
+}
+.imageContainer img{
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.firstImg , .secoundImg , .thirdImg , .fourthImg{
+    text-align: center;
+    margin: 10px auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.imageContainer button{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #ffffff;
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 0px;
+    border: none;
+    opacity: 0.8;
+    font-family: iranyekan;
+    cursor: pointer;
+
+}
+.imgBox{
+    margin: 10px auto;
+}
+.submitBtn{
+    margin-top: 10px;
+    background: #C70899;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    font-family: iranyekan;
+    cursor: pointer;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+.checkBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media only screen and (max-width: 767.98px) {
+    .inputs{
+        grid-template-columns: 1fr;
+    }
+   }
