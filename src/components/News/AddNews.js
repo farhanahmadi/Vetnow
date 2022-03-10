@@ -89,7 +89,7 @@ const AddNews = () => {
         fetch(createNewsLINK,{
             method:"POST",
             headers: new Headers({
-                'Authorization': 'Token '+ localStorage.getItem('key'), 
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
             }),
             body:formD
         }).then(response => console.log(response));

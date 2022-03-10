@@ -7,67 +7,31 @@ import { MainLink } from './Link/MainLink';
 import BarChart from './Chart/BarChart'
 
 const AdminMainPanel = () => {
- 
-    const [category , setCategory] = useState([])
-    const [report , setReport] = useState({
-        gains: '',
-        total_sells_per_month: '',
 
-    })
     const [sells , setSells] = useState({
-        order_count: '',
+        refunds_count: '',
+        pending_orders: '',
         total_gain: '',
         total_sells: '',
 
     })
-    const [categorySell , setCategorySell] = useState({
-        gains: '',
+    const [users , setUsers] = useState({
+        users_count: '',
 
-    })
-    const [data , setData] = useState({
-        category: '',
-        startDate: '',
-        endDate: '',
     })
 
 
     
     useEffect( async () => {
-        await axios.get(`${MainLink}/api/v1/categories/`).then(res => setCategory(res.data))
         const total_gains =  await axios.get(`${MainLink}/api/v1/total_gains/`)
-        const order_count =  await axios.get(`${MainLink}/api/v1/orders_count/`)
-        setSells({...sells , order_count: order_count.data.all ,
+        const order_count =  await axios.get(`${MainLink}/api/v1/orders/status/count/`)
+        const user =  await axios.get(`${MainLink}/api/v1/users/count/`)
+        setSells({...sells , pending_orders: order_count.data.pending_orders , refunds_count: order_count.data.refunds_count ,
             total_gain: total_gains.data.total_gain ,
             total_sells: total_gains.data.total_sells})
-        
-    },[])
-
-    const categoryHandler = (event) =>{
-        setData({...data , category: event.target.value})
-    }
-
-    const inputsHandler = (event) =>{
-        setData({...data , [event.target.name] : event.target.value})
-        console.log(data);
-    }
+        setUsers({...users , users_count: user.data.users_count})
     
-
-    const submitHandler = (event) =>{
-        event.preventDefault()
-        if (data.startDate.length > 0) {
-            setCategorySell({...categorySell , gains: ''})
-            axios.post(`${MainLink}/api/v1/gains/` ,{
-                slug: data.category,
-                date_start: data.startDate,
-                date_end: data.endDate
-            }).then(response => setReport({...report , 
-                gains: response.data.gains,
-                total_sells_per_month: response.data.total_sells_per_month,
-            }))
-        }else{
-            axios.get(`${MainLink}/api/v1/gains/${data.category}/`).then(response => setCategorySell({...data, gains: response.data.gains}))
-        }
-    }   
+    },[])
 
     return (
         <div className={styles.container}>
@@ -75,24 +39,30 @@ const AdminMainPanel = () => {
             <section className={styles.Boxes}>
                <div className={styles.topBoxDiv}>
                     <div>
-
+                        <p>تعداد کل کاربران</p>
+                        {users.users_count}
                     </div>
                     <div>
+                        <p>سود کل</p>
+                        {sells.total_gain}
                         
                     </div>
                     <div>
-                        
+                        <p>فروش کل</p>
+                        {sells.total_sells}
                     </div>
                </div>
                <div className={styles.bottomBoxDiv}>
                     <div>
-
+                       
                     </div>
                     <div>
-                        
+                        <p>تعداد سفارشات باز</p>
+                        {sells.pending_orders}
                     </div>
                     <div>
-                        
+                        <p>سفارشات مرجوعی</p>
+                        {sells.refunds_count}
                     </div>
                </div>
                </section>

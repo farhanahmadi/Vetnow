@@ -14,6 +14,8 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    min-height: calc(100vh - 75px);
+
 }
 .main section{
     display: flex;
@@ -22,6 +24,7 @@
     width: 100%;
     margin: 10px 0px;
 }
+
 .Boxes{
     display: flex;
     flex-direction: column;
@@ -37,17 +40,36 @@
     margin: 15px 0px;
 }
 .topBoxDiv div{
-    background-color: orange;
+    background-color: #EF394E;
     width: 200px;
     height: 150px;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-shadow: 2px 2px 4px #000000;
 }
 .bottomBoxDiv div{
-    background-color: orange;
+    background-color: #EF394E;
     width: 200px;
     height: 150px;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    flex-direction: column;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-shadow: 2px 2px 4px #000000;
+    
 }
 .sidebar{
     width: calc(100% / 5);
+    min-height: 100%;
+
 }

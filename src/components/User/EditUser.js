@@ -44,7 +44,11 @@ const EditUser = (props) => {
     // gereftan api input ha baraye namayesh value gabli
     useEffect( async () =>  {
         const URL = `${MainLink}/api/v1/user/update/${props.match.params.id}/`
-        const inputValue = await axios.get(URL);
+        const inputValue = await axios.get(URL , {
+            headers:{
+              'Authorization': 'Token '+ localStorage.getItem('token'), 
+          },
+          });
         setData(await {...data , 
             username: inputValue.data.username,
             email: inputValue.data.email,
@@ -191,7 +195,7 @@ const EditUser = (props) => {
                     <section className={styles.checkBox}>
                         <label htmlFor="is_admin" >کاربر ادمین</label>
                         <input id="is_admin" name="is_admin" type="checkbox" checked={data.is_admin} value={data.is_admin} onChange={checkBoxHandler} /> 
-                        <label htmlFor="is_doctor" >کاربر ادمین</label>
+                        <label htmlFor="is_doctor" >کاربر دکتر</label>
                         <input id="is_doctor" name="is_doctor" type="checkbox" checked={data.is_doctor} value={data.is_doctor} onChange={checkBoxHandler} /> 
                     </section>
                 </section>
@@ -256,7 +260,9 @@ const EditUser = (props) => {
                     
                 </div>
                 </section>
-                <input type="submit" className={styles.submitBtn} />
+                <section style={{textAlign: 'center' , marginTop: '10px'}}>
+                 <input type="submit" value="ثبت تغییرات" className={styles.submitBtn} />
+                </section>
             </form>
             <section className={styles.sidebar}>
              <Sidebar  />

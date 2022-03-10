@@ -10,19 +10,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-const LoginConfirmation = (props) => {
-
-    console.log(props.is_admin);
+const LoginConfirmation = () => {
 
     const [data , setData] = useState({
         key: '',
         password: '',
     })
-
-    // useEffect( () => {
-    //     setData({...data , key: localStorage.getItem('key')})
-    // },[])
-    
     const inputHandler = (event) =>{
         setData({...data , key: localStorage.getItem('key') , password :event.target.value})
         console.log(data);
@@ -35,7 +28,7 @@ const LoginConfirmation = (props) => {
             key: data.key,
             password: data.password,
         }).then(response => {
-            if (props.is_admin) {
+            if (response.data.admin) {
                 localStorage.setItem('token' , response.data.token)
                 redirect.push('/Admin-MainPanel')
             }else{

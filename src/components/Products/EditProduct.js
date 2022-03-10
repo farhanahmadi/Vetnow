@@ -63,7 +63,8 @@ const EditProduct  = (props) => {
     // 
      // gereftan value selected option baraye gereftan zirshaxe ha
      const categoryHandler = (e) =>{ 
-        setSubcategory(([categories[e.target.value - 1 ]]))
+        setSubcategory([categories.find(data => data.id == e.target.value)])
+        console.log(e.target.value);
         setData({...data ,category: [e.target.value]})
     }
     const subCategoryHandler = (e) =>{ 
@@ -79,7 +80,11 @@ const EditProduct  = (props) => {
      // gereftan api input ha baraye namayesh value gabli
      useEffect( async () =>  {
         const URL = `${MainLink}/api/v1/product/update/${props.match.params.slug}/`
-        const inputValue = await axios.get(URL);
+        const inputValue = await axios.get(URL,{
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            }
+        });
         setData(await {...data , 
             name: inputValue.data.name,
             slug: inputValue.data.slug,
@@ -170,18 +175,21 @@ const EditProduct  = (props) => {
     // 
     return (
         <div className={styles.container}>
+        {console.log(data)}
             <form className={styles.main} onSubmit={submitHandler}>
                 <section className={styles.header}>
-                    <h3>ایجاد محصول</h3>
+                    <h3>ویرایش محصول</h3>
                 </section>
+                <br />
                 <section className={styles.inputs} dir='rtl'>
                     <input type="text" value={data.name} placeholder="نام محصول" name="name" onChange={inputsHandler} />
                     <select  onChange={e => categoryHandler(e)}>
-                        {categories.length > 0 ? <option disabled selected hidden value="">{categories[categoryId.category - 1].name}</option> : <option disabled hidden selected value="null">دسته بندی</option>}
-                        {categories.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
+                        {/* {categories.length > 0 ? <option disabled selected hidden value="">{categories[categoryId.category - 1].name}</option> : <option disabled hidden selected value="null">دسته بندی</option>} */}
+                        {categories.map(item => item.parent.length > 0 &&  <option disabled selected hidden key={item.id} value="">{categories.find(data => data.id == categoryId.category).name}</option> )}
+                        {categories.map(item => item.parent.length > 0 && <option key={item.id} value={item.id}>{item.name}</option>)}
                     </select>
                     <select onChange={e => subCategoryHandler(e)}>
-                        {categories.length > 0 && categoryId.subcategory ? <option disabled selected value=""> {(categories[categoryId.category - 1].parent.find(item => item.id == [categoryId.subcategory]).name)} </option> : <option disabled selected value="null">دسته بندی</option>}
+                        {categories.length > 0 && categoryId.subcategory ? <option disabled hidden selected value=""> {(categories.find(data => data.id == categoryId.category).parent.find(item => item.id == [categoryId.subcategory]).name)} </option> : <option disabled selected value="null">دسته بندی</option>}
                         {subcategory.map(subcategories => subcategories.parent.map(subcategory => <option key={subcategory.id} value={subcategory.id}>{subcategory.name}</option>))}
                     </select>
                     <input type="number" value={data.quantity} placeholder="تعداد محصول" name="quantity" onChange={inputsHandler} />

@@ -1,9 +1,0 @@
-.Container{
-  background: url(../Image/ss.jpg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.loginForm{
-  border: 1px solid black;
-}

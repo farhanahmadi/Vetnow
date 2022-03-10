@@ -41,7 +41,6 @@ function App() {
   const location = useLocation();
   const currentLocation = location.pathname;
 
-
   useEffect(async () =>  {
     await axios.get(`${MainLink}/api/v1/check/user/per/`,{
         headers:{
@@ -70,7 +69,7 @@ function App() {
            <Route path="/Edit-User/:id" component={EditUser} />
            <Route path="/Admin-MainPanel" component={AdminMainPanel} />
            <Route path="/Edit-Refund_Order/:id" component={RefundsEdit} />
-           <Route path="/Edit-Order/:id" component={EditOrder} />
+           <Route path="/Edit-Order/:id/:order_id" component={EditOrder} />
            <Route path="/Order-List" component={OrdersList} />
            <Route path="/Products-List" component={ProductsList} />
            <Route path="/Refunds-List" component={RefundsList} />
@@ -93,10 +92,7 @@ function App() {
   }    
         <Switch>
           <Route path="/Notfound" component={Notfound} />
-          <Route path="/Login-Confirmation"
-          render={(props) => (
-            <LoginConfirmation {...props} is_admin={isAdmin} />
-          )}/>
+          <Route path="/Login-Confirmation" component={LoginConfirmation} />
           <Route exact path="/" component={Login} />
         </Switch>
     </div>

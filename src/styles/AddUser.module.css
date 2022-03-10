@@ -8,9 +8,13 @@
     width: calc(400% / 5);
     margin-top: 50px;
     padding: 20px;
+    min-height: calc(100vh - 125px);
+
 }
 .sidebar{
     width: calc(100% / 5);
+    min-height: 100%;
+
 }
 .header{
     width: 100%;
@@ -61,7 +65,7 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .divImg p {
-    font-size: 14px;
+    font-size: 12px!important;
 }
 .imageContainer{
     display: flex;
@@ -101,6 +105,9 @@
 }
 .imgBox{
     margin: 10px auto;
+}
+.divSubmitBtn{
+    text-align: center;
 }
 .submitBtn{
     margin-top: 10px;

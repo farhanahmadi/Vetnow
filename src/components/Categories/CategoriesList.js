@@ -4,6 +4,8 @@ import styles from '../../styles/CategoriesList.module.css'
 import Sidebar from '../Sidebar'
 import {Link} from 'react-router-dom'
 import { MainLink } from '../Link/MainLink'
+import { FaSearch  } from 'react-icons/fa';
+
 
 const CategoriesList = () => {
     const [data , setData] = useState([])
@@ -11,29 +13,56 @@ const CategoriesList = () => {
     const [count , setCount] = useState()
     const [paginate , setPaginate] = useState(1);
     const [id , setId] = useState(1);
-    let URL = `${MainLink}/api/v1/pagination/categories/?page=${paginate}`;
+    const [extraPaginateBtn , setExtraPaginateBtn] = useState(false)
+    const [search , setSearch] = useState("");
 
-
+    
+    let URL = `${MainLink}/api/v1/pagination/categories/?page=${paginate}&search=${search}`;
     useEffect( async () => {
-        await axios.get(URL).then(res => setData(res.data.results))
-        await axios.get(URL).then(res => setCount(res.data.count))
+        await axios.get(URL , {
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            },
+            }).then(res => setData(res.data.results))
+            await axios.get(URL , {
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            },
+            }).then(res => setCount(res.data.count))
+            if (search === "") {
+                for (let index = 0; index < count/2; index++) {
+                    paginateBtn.length < count/2 && setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
+            }}else{
+                if (count === 1) {
+                    setPaginateBtn([0])
+                }
+                else{
+                    !extraPaginateBtn && setPaginateBtn([])
+                    paginateBtn.length == 0 && setExtraPaginateBtn(true)
+                    for (let index = 0; index < count/2; index++) {
+                        setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
+                    console.log(count);
 
-        for (let index = 0; index < count/2; index++) {
-           paginateBtn.length < count/2 && setPaginateBtn((prevstate) => [...prevstate , index])   
-        }
-        console.log(data);
+            }}
+            
+    }
+    },[paginate , count , search ])
 
-}, [paginate , count ])
+    const clickHandler = (number) =>{
+        setPaginate(number.target.id);
+        setId(number.target.id);
+        console.log(id);
+    }
+    const searchHandler = (event) =>{
+        setSearch(event.target.value)
+    }
 
-const clickHandler = (number) =>{
-    setPaginate(number.target.id);
-    setId(number.target.id);
-    console.log(id);
-}
-
-const deleteHandler = (slug) =>{
-    axios.delete(`${MainLink}/api/v1/category/delete/${slug}/`)
-}
+    const deleteHandler = (slug) =>{
+        axios.delete(`${MainLink}/api/v1/category/delete/${slug}/`,{
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            }})
+    }
     return (
         <div className={styles.container}>
             <section className={styles.main}>
@@ -41,37 +70,37 @@ const deleteHandler = (slug) =>{
                     <Link to="/Add-category">+ ایجاد دسته بندی </Link>
                     <h3>دسته بندی ها صفحه {paginate}</h3>
                </section>
+               <section className={styles.searchTableHeader}>
+                   <div className={styles.searchBox}>
+                   <li style={{position: 'absolute' , padding: '10px' , minWidth: '40px' , listStyleType: 'none' , marginLeft: '10px' , cursor: 'pointer'}}><FaSearch /></li>
+                    <input onChange={searchHandler} className={styles.searchInput} value={search} placeholder="جستجو ..." />
+                   </div>
+                   <div className={styles.textBox}>
+                    <h3>جستجو در دسته بندی ها</h3>
+                   </div>
+               </section>
                <table dir="rtl">
+                   <thead>
                     <tr>
                         <th>ID</th>
                         <th> دسته بندی</th>
                         <th> زیر شاخه</th>
                         <th>عملیات</th>
                     </tr>
-                    {data.map(rows => rows.parent.length > 0 ?
-                    rows.parent.map(item =>
-                    <tr key={item.id}> 
+                    </thead>
+                    <tbody>
+                   {data.map(item => 
+                     <tr key={item.id}> 
                         <td>{item.id}</td>
                         <td>{item.name}</td>
-                        <td>{rows.name}</td>
+                        <td>{item.name}</td>
                         <td>
                         <Link to={`Edit-Category/${item.slug}`}> ویرایش دسته بندی</Link>
                         <button onClick={() => deleteHandler(item.slug)}>حذف دسته بندی</button>
                         </td>
-                    </tr>
-                 )
-                 :
-                 data.map(item =>
-                    <tr key={item.id}> 
-                        <td>{item.name}</td>
-                        <td>{item.id}</td>
-                        <td>
-                        {/* <Link to={`/Edit-Product/${rows.categories.map(item => item.id)}/${rows.slug}`}>ویرایش</Link> */}
-                        {/* <button onClick={deleteHandler(rows.slug)}>حذف دسته بندی</button> */}
-                        </td>
-                    </tr>
-
-                    ))}
+                     </tr>
+                    )}
+                   </tbody>
                 </table>
                 <div className={styles.pagination}>
                 <a onClick={clickHandler} href="#" className={styles.arrows}>&laquo;</a>

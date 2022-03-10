@@ -95,7 +95,8 @@ export default function Reports() {
                 <section className={styles.sectionBox} dir='rtl'>
                     <select  onChange={e => categoryHandler(e)}>
                         <option value="null">دسته بندی</option>
-                        {category.map(item => <option key={item.id} value={item.slug}>{item.name}</option>)}
+                        {/* {category.map(item => <option key={item.id} value={item.slug}>{item.name}</option>)} */}
+                        {category.map(item => item.parent.length > 0 && <option key={item.id} value={item.id}>{item.name}</option>)}
                     </select>
                     {categorySell.gains && <p>سود از فروش {categorySell.gains}</p>}
                     

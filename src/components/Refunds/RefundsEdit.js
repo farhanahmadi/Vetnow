@@ -23,6 +23,7 @@ export default function RefundsEdit(props) {
         confirmation: '',
         created: '',
         message: '',
+        order_id: '',
     })
 
     useEffect( async () =>{
@@ -41,15 +42,11 @@ export default function RefundsEdit(props) {
         confirmation: res.data.Confirmation,
         created: res.data.created_at,
         message: res.data.message,
+        order_id: res.data.order_id,
         
         }))
             
         },[])
-    const Order_Payment_Status_Handler = (e) =>{
-        setData({...data, payment_status: e.target.value})
-
-    }
-
     const inputHandler = (event) =>{
         setData({...data , confirmation: event.target.checked})
         console.log(data);
@@ -121,6 +118,10 @@ export default function RefundsEdit(props) {
                 <section className={styles.labelSection}>
                     <label>تاریخ</label>
                     <input type="text" disabled value={shamsi.gregorianToJalali(data.created)} />
+                </section>
+                <section className={styles.labelSection}>
+                    <label>ایدی سفارش</label>
+                    <input type="text" disabled value={data.order_id} />
                 </section>
                 <section style={{marginTop: 25}} className={styles.labelSection}>
                     <label className={styles.checkBox}><input type="checkbox" checked={data.confirmation} onChange={inputHandler} />تایید شده ؟</label>

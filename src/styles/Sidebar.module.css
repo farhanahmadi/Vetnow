@@ -1,7 +1,8 @@
 .sideBar{
     text-align: right;
     background-color: black;
-    height: 100%;
+    /* height: calc(100vh - 75px); */
+    min-height: 100%;
     overflow: hidden;
     padding-top: 50px;
 }

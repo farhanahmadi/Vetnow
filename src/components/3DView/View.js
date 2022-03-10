@@ -218,7 +218,10 @@ const View = (props) => {
     data.photo30 &&
       photo.photo30 &&
       formD.append("image30", photo.photo30, photo.photo30.name);
-    fetch(`${MainLink}/api/v1/threed/create/`, {
+      fetch(`${MainLink}/api/v1/threed/create/`, {
+        headers:{
+          'Authorization': 'Token '+ localStorage.getItem('token'), 
+      },
       method: "POST",
       body: formD,
     }).then((res) => console.log(res));

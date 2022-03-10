@@ -222,7 +222,10 @@ const AddUser = () => {
                     
                 </div>
                 </section>
-                <input type="submit" className={styles.submitBtn} />
+                <section className={styles.divSubmitBtn}>
+                    <input type="submit" className={styles.submitBtn} />
+                </section>
+                
             </form>
             <section className={styles.sidebar}>
              <Sidebar  />

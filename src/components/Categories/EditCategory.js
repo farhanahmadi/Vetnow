@@ -3,8 +3,12 @@ import React, { useEffect, useState } from 'react'
 import styles from "../../styles/EditCategory.module.css"
 import { MainLink } from '../Link/MainLink'
 import Sidebar from '../Sidebar'
+import {useHistory} from 'react-router-dom'
+
 
 const EditCategory = (props) => {
+    const redirect = new useHistory();
+
   
     const [data , setData] = useState({
         parent : '' ,
@@ -13,12 +17,19 @@ const EditCategory = (props) => {
     const [category , setCategory] = useState([]);
 
     useEffect( async () =>{
-        await axios.get(`${MainLink}/api/v1/category/update/${props.match.params.slug}`).then(res => setData({
+        await axios.get(`${MainLink}/api/v1/category/update/${props.match.params.slug}`,{
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            }
+        }).then(res => setData({
             parent: res.data.parent,
-            subcategoryName: res.data.name
+            subcategoryName: res.data.parent && res.data.name
         }))
-        await axios.get(`${MainLink}/api/v1/categories/`).then(res => setCategory(res.data))
-        console.log(data.parent);
+        await axios.get(`${MainLink}/api/v1/categories/`,{
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            }
+        }).then(res => setCategory(res.data))
 
     },[])
     const categoryHandler = (e) =>{
@@ -34,10 +45,18 @@ const EditCategory = (props) => {
         axios.put(`${MainLink}/api/v1/category/update/${props.match.params.slug}/` , {
             parent: data.parent,
             name: data.subcategoryName
+        }
+        ,{
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            }
         }).then(res => console.log(res))
+        redirect.push(`/Edit-Category/${data.subcategoryName.split(" ").join("-")}`)
+        
     }
     return (
         <div className={styles.container}>
+            {console.log(category)}
         <form className={styles.main} onSubmit={submitHandler}>
             <section className={styles.header}>
                 <h3>ویرایش دسته بندی</h3>
@@ -45,8 +64,9 @@ const EditCategory = (props) => {
             <br />
             <section className={styles.inputs} dir='rtl'>
                 <select  onChange={e => categoryHandler(e)}>
-                   {category.length > 0 && <option selected hidden value={category.find(item => item.id == data.parent).id} >{category.find(item => item.id == data.parent).name}</option>}
-                   {category.map(item => <option name="category" key={item.id} defaultValue="null" value={item.id}>{item.name}</option>)}
+                   {category.length > 0 && category.parent ? <option selected hidden value={category.find(item => item.id == data.parent).id} >{category.find(item => item.id == data.parent).name}</option> :
+                   <option selected hidden value="" >{category.length > 0 && category.find(item => item.slug == props.match.params.slug).name}</option>  }
+                   {category.map(item => item.parent.length > 0 && <option name="category" key={item.id} defaultValue="null" value={item.id}>{item.name}</option>)}
 
                 </select>
                 <input type="text" value={data.subcategoryName} placeholder="نام زیرشاخه را وارد کنید" name="subcategoryName" onChange={inputHandler} />

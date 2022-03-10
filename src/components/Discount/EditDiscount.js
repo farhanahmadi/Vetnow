@@ -4,10 +4,13 @@ import styles from "../../styles/EditDiscount.module.css"
 import Sidebar from '../Sidebar'
 import { MainLink } from '../Link/MainLink';
 import * as shamsi from 'shamsi-date-converter';
-
+import Multiselect from 'multiselect-react-dropdown';
 
 export default function EditDiscount(props) {
     const [products , setProducts] = useState([]);
+    const [number , setNumber] = useState();
+    const [options , setOptions] = useState([]);
+
 
     const [data , setData] = useState({
         product: [],
@@ -26,10 +29,12 @@ export default function EditDiscount(props) {
             valid_from: shamsi.gregorianToJalali(res.data.valid_from.split("-")).join("-"),
             valid_to: shamsi.gregorianToJalali(res.data.valid_from.split("-")).join("-")
             }))
-            
+
+           
         },[])
     const AddProductHandler = (e) =>{
-        data.productId.push(e.target.value)
+        data.productId.push(...e.map(item => item.id))
+        setNumber(Math.random())
         console.log(data.productId);
 
     }
@@ -48,9 +53,14 @@ export default function EditDiscount(props) {
             discount_percent: data.discountPercent,
             valid_from: data.valid_from,
             valid_to: data.valid_to,
-            products: data.productId
-        }).then(res => console.log(res))
+            products: data.productId.length > 0 ? [...new Set(data.productId)] : ['0']
+        }).then(res => console.log(res)).catch((error) => {
+            if(error.response){
+              console.log(error.response.data); // => the response payload 
+            }
+        });
     }
+
     
     return (
         <div className={styles.container}>
@@ -60,14 +70,22 @@ export default function EditDiscount(props) {
             </section>
             <br />
             <section className={styles.inputs} dir='rtl'>
-                <select  onChange={e => AddProductHandler(e)}>
+                {/* <select  onChange={e => AddProductHandler(e)}>
                     <option selected >افزردن محصول برای تخفیف</option>
-                   {products.map(item => <option name="products" key={item.id} defaultValue="null" value={item.id}>{item.name}</option>)}
-
-                </select>
+                    {products.map(item => <option name="products" key={item.id} value={item.id}>{item.name}</option> )}
+                    {data.productId.length > 0 && console.log(data.productId)}
+                </select> */}
+               <Multiselect 
+                    options={products} // Options to display in the dropdown
+                    // selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
+                    onSelect={AddProductHandler} // Function will trigger on select event
+                    // onRemove={this.onRemove} // Function will trigger on remove event
+                    displayValue="name" // Property name to display in the dropdown options
+                    // onChange={(e) => {AddProductHandler(e)}}
+                    />
                 <select  onChange={e => DeleteProductHandler(e)}>
                     <option selected >حذف محصول از تخفیف ها</option>
-                   {data.product.map(item => <option name="products" key={item.id} defaultValue="null" value={item.id}>{item.name}</option>)}
+                   {data.product.map(item => <option name="products" key={item.id}  value={item.id}>{item.name}</option>)}
 
 
                 </select>

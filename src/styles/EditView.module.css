@@ -24,6 +24,9 @@
     align-items: center;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+.divImg p{
+    font-size: 12px!important;
+}
 .imageContainer{
     width: 100%;
     display: grid;
@@ -59,6 +62,18 @@
     font-family: iranyekan;
     cursor: pointer;
 
+}
+.submitBtn{
+    margin-top: 10px;
+    background: #C70899;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    font-family: iranyekan;
+    cursor: pointer;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .imgBox{
     margin: 10px auto;

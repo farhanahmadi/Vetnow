@@ -1,1 +1,0 @@
-export const MainLink = "http://5.234.100.208";

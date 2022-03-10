@@ -57,9 +57,10 @@ const AddProduct = () => {
     // 
      // gereftan value selected option baraye gereftan zirshaxe ha
      const categoryHandler = (e) =>{ 
-        setSubcategory(([categories[e.target.value - 1 ]]))
+        setSubcategory([categories.find(item => item.id == e.target.value)])
         setData({...data ,category: [e.target.value]})
         console.log(data.category);
+        // console.log(categories.find(item => item.id == e.target.value));
     }
     const subCategoryHandler = (e) =>{ 
         setData({...data , subcategory: [e.target.value]})
@@ -133,6 +134,9 @@ const AddProduct = () => {
         data.pdffile && formD.append('pdf_file' , pdf , pdf.name)
         console.log(formD);
         fetch(createProductLINK,{
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            },
             method:"POST",
             body:formD
         }).then(response => {
@@ -161,7 +165,7 @@ const AddProduct = () => {
                     <input type="text" value={data.name} placeholder="نام محصول" name="name" onChange={inputsHandler} />
                     <select  onChange={e => categoryHandler(e)}>
                         <option value="null">دسته بندی</option>
-                        {categories.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
+                        {categories.map(item => item.parent.length > 0 && <option key={item.id} value={item.id}>{item.name}</option>)}
                     </select>
                     <select onChange={e => subCategoryHandler(e)}>
                         <option value="null">زیر شاخه</option>
