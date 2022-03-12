@@ -54,7 +54,6 @@ const BarChart = () => {
     fetchCoins()
   }, [])
 
-  console.log("chart", chart);
   var data = {
     labels: Months.map(item => item),
     datasets: [{

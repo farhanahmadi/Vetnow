@@ -99,6 +99,7 @@ const EditNews = (props) => {
         formD.append('created_at' , data.created_at)
         formD.append('author' , data.author)
         fetch(`${MainLink}/api/v1/news/update/${props.match.params.slug}/`,{
+            
             method:"PUT",
             headers: new Headers({
                 'Authorization': 'Token '+ localStorage.getItem('token'), 

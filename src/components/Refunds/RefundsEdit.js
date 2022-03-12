@@ -56,7 +56,9 @@ export default function RefundsEdit(props) {
         event.preventDefault()
         axios.put(`${MainLink}/api/v1/refund/update/${props.match.params.id}/` , {
             Confirmation: data.confirmation,
-        }).then(res => console.log(res))
+        },{ headers:{
+            'Authorization': 'Token '+ localStorage.getItem('token'), 
+        }}).then(res => console.log(res))
     }
     
     return (

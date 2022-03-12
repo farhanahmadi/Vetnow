@@ -31,8 +31,7 @@ export default function RefundsList(props) {
         await axios.get(URL , {
         headers:{
             'Authorization': 'Token '+ localStorage.getItem('token'), 
-        },
-        }).then(res => setCount(res.data.count))
+        }}).then(res => setCount(res.data.count))
         if (serach === "") {
             for (let index = 0; index < count/2; index++) {
                 paginateBtn.length < count/2 && setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])

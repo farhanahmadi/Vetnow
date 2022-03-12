@@ -87,6 +87,7 @@ const AddNews = () => {
         formD.append('author' , data.author)
         console.log(formD);
         fetch(createNewsLINK,{
+            
             method:"POST",
             headers: new Headers({
                 'Authorization': 'Token '+ localStorage.getItem('token'), 

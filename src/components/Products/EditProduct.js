@@ -172,6 +172,9 @@ const EditProduct  = (props) => {
         formD.append('manufacturer_company' , data.manufacturerPrice)
         data.pdf_file && formD.append('pdf_file' , pdf , pdf.name)
         fetch(`${MainLink}/api/v1/product/update/${props.match.params.slug}/`,{
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            },
             method:"PUT",
             body:formD
         }).then(res => {

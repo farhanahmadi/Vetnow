@@ -20,8 +20,14 @@ export default function DiscountList() {
 
     let URL = `${MainLink}/api/v1/discount/list/?page=${paginate}`;
     useEffect( async () => {
-        await axios.get(URL).then(res => setData(res.data.results))
-        await axios.get(URL).then(res => setCount(res.data.count))
+        await axios.get(URL,{
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            }}).then(res => setData(res.data.results))
+        await axios.get(URL,{
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            }}).then(res => setCount(res.data.count))
   
         for (let index = 0; index < count/2; index++) {
            paginateBtn.length < count/2 && setPaginateBtn((prevstate) => [...prevstate , index])   

@@ -23,9 +23,15 @@ const AdminMainPanel = () => {
 
     
     useEffect( async () => {
-        const total_gains =  await axios.get(`${MainLink}/api/v1/total_gains/`)
-        const order_count =  await axios.get(`${MainLink}/api/v1/orders/status/count/`)
-        const user =  await axios.get(`${MainLink}/api/v1/users/count/`)
+        const total_gains =  await axios.get(`${MainLink}/api/v1/total_gains/`,{ headers:{
+            'Authorization': 'Token '+ localStorage.getItem('token'), 
+        }})
+        const order_count =  await axios.get(`${MainLink}/api/v1/orders/status/count/`,{ headers:{
+            'Authorization': 'Token '+ localStorage.getItem('token'), 
+        }})
+        const user =  await axios.get(`${MainLink}/api/v1/users/count/`,{ headers:{
+            'Authorization': 'Token '+ localStorage.getItem('token'), 
+        }})
         setSells({...sells , pending_orders: order_count.data.pending_orders , refunds_count: order_count.data.refunds_count ,
             total_gain: total_gains.data.total_gain ,
             total_sells: total_gains.data.total_sells})

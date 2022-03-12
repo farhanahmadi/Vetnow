@@ -34,8 +34,12 @@ export default function Reports() {
     
     useEffect( async () => {
         await axios.get(`${MainLink}/api/v1/categories/`).then(res => setCategory(res.data))
-        const total_gains =  await axios.get(`${MainLink}/api/v1/total_gains/`)
-        const order_count =  await axios.get(`${MainLink}/api/v1/orders_count/`)
+        const total_gains =  await axios.get(`${MainLink}/api/v1/total_gains/`,{ headers:{
+            'Authorization': 'Token '+ localStorage.getItem('token'), 
+        }})
+        const order_count =  await axios.get(`${MainLink}/api/v1/orders_count/`,{ headers:{
+            'Authorization': 'Token '+ localStorage.getItem('token'), 
+        }})
         setSells({...sells , order_count: order_count.data.all ,
             total_gain: total_gains.data.total_gain ,
             total_sells: total_gains.data.total_sells})
@@ -60,7 +64,9 @@ export default function Reports() {
                 slug: data.category,
                 date_start: data.startDate,
                 date_end: data.endDate
-            }).then(response => setReport({...report , 
+            },{ headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            }}).then(response => setReport({...report , 
                 gains: response.data.gains,
                 total_sells_per_month: response.data.total_sells_per_month,
             }))
