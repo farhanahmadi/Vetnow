@@ -69,9 +69,11 @@ const AdminMainPanel = () => {
                <section className={styles.chart}>
                 
             </section>
+            <div className={styles.barChart}>
             <BarChart
 
             />
+            </div>
             </section>
             <section className={styles.sidebar}>
             <Sidebar  />

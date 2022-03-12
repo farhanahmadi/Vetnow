@@ -73,7 +73,7 @@ const AdminProduct = () => {
                     <h3>جستجو در محصولات</h3>
                    </div>
                </section>
-               <table dir="rtl">
+               <table dir="rtl" className={styles.productsTable}>
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -91,7 +91,7 @@ const AdminProduct = () => {
                         <td>{rows.categories.map(item => item.name + " / ")}</td>
                         <td>{rows.price}</td>
                         <td>{rows.quantity}</td>
-                        <td><Link to={`/Edit-Product/${rows.categories.map(item => item.id)}/${rows.slug}`}>ویرایش</Link></td>
+                        <td><button className={styles.editButton}><Link to={`/Edit-Product/${rows.categories.map(item => item.id)}/${rows.slug}`}>ویرایش</Link></button></td>
                      </tr>)}
                 </tbody>
                 </table>

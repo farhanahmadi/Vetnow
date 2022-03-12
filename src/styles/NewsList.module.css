@@ -45,11 +45,14 @@
 .searchInput:focus{
     outline: none;
 }
-.textBox{
-    width: 20%;
+.textBox {
+    width: 40%;
 }
+
 .textBox h3{
     text-align: right;
+    font-size: 10px;
+    white-space: nowrap;
 }
 .tableHeader{
     background-color: #F7F7F7;
@@ -113,6 +116,9 @@ th::before{
 th:last-child::before{
     width: 0px;
 }
+.newsTable th {
+    text-align: center;
+}
 .pagination {
     display: inline-block;
     margin-top: 20px;
@@ -141,33 +147,105 @@ th:last-child::before{
     border-radius: 5px;
     color: white;
 }
+.deleteButton {
+    background: rgb(216, 7, 7);
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: sansiran;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 5px 5px;
+    width: 100%;
+}
 
+.editButton {
+    background: #FFCC00;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: sansiran;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 5px 5px;
+    width: 100%;
+}
+
+.editButton a {
+    text-decoration: none;
+    color: white;
+}
 
 @media only screen and (max-width: 575.98px) {
-   td,th{
-       padding: 10px 2px;
-       font-size: 10px;
-       white-space: nowrap;
-   }
-   .pagination a {
-       padding: 10px 6px;
-   }
-   .tableHeader{
-       width: 100%;
-   }
-   .tableHeader h3{
-       font-size: 14px;
-   }
-   .tableHeader button{
-       padding: 3px 4px;
-   }
-   th::before{
-    top: 8px;
-}
+    .newsTable td,
+    th {
+        padding: 10px 2px;
+        font-size: 9px !important;
+    }
+
+    .searchTableHeader {
+        width: 100%;
+    }
+
+    .editButton {
+        font-size: 9px;
+    }
+
+    .searchBox {
+        width: 90%;
+        outline: none;
+    }
+
+    .textBox {
+        display: none;
+    }
+
+    .tableHeader a {
+        white-space: nowrap;
+        font-size: 10px;
+    }
+
+    .textBox {
+        width: auto;
+    }
+
+    .pagination a {
+        padding: 10px 6px;
+    }
+
+    .tableHeader {
+        width: 100%;
+    }
+
+    .tableHeader h3 {
+        font-size: 10px;
+    }
+
+    .tableHeader button {
+        padding: 3px 4px;
+    }
+
+    th::before {
+        top: 8px;
+    }
+
+    .deleteButton {
+        font-size: 10px !important;
+        white-space: nowrap;
+        width: 90%;
+        margin-top: 10px !important;
+    }
+
+    .editButton {
+        font-size: 10px;
+        white-space: nowrap;
+        width: 90% !important;
+
+    }
   }
-
-  .sidebar{
-    width: calc(100% / 5);
-    min-height: 100%;
-
-}

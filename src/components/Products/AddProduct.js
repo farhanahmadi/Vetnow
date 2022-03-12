@@ -6,7 +6,8 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { MainLink } from '../Link/MainLink';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const AddProduct = () => {
@@ -140,13 +141,19 @@ const AddProduct = () => {
             method:"POST",
             body:formD
         }).then(response => {
-                if(event.target.name === "submit3D"){
+                if(response.status !== 400){
                     response.json().then(json => {
-                        console.log(json);
-                        history.push(`/3Dview-Products/${json.id}`)
+                        toast.success("محصول با موفقیت ساخته شد")
+                        setTimeout(() => {
+                            history.push(`/3Dview-Products/${json.id}`)
+                        },5000)
+                      });
+                }else{
+                    response.json().then(json => {
+                        toast.error("موارد وارد شده صحیح نمیباشد")
                       });
                 }
-          });
+          })
     }
     const submitHandler = async (event) =>{
         event.preventDefault();
@@ -163,7 +170,7 @@ const AddProduct = () => {
                 </section>
                 <section className={styles.inputs} dir='rtl'>
                     <input type="text" value={data.name} placeholder="نام محصول" name="name" onChange={inputsHandler} />
-                    <select  onChange={e => categoryHandler(e)}>
+                    <select onChange={e => categoryHandler(e)}>
                         <option value="null">دسته بندی</option>
                         {categories.map(item => item.parent.length > 0 && <option key={item.id} value={item.id}>{item.name}</option>)}
                     </select>
@@ -248,12 +255,13 @@ const AddProduct = () => {
                     
                 </div>
                 </section>
-                <input name="submit3D" onClick={submit3DHandler} className={styles.submitBtn} type="button" value=" ثبت محصول و سه بعدی  " />
+                <input name="submit3D" onClick={submit3DHandler} className={styles.submitBtn} type="submit" value=" ثبت محصول و سه بعدی  " />
 
             </form>
             <section className={styles.sidebar}>
              <Sidebar  />
             </section>
+            <ToastContainer />
         </div>
     )
 }

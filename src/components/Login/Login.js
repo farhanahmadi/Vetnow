@@ -3,8 +3,9 @@ import styles from "../../styles/Login.module.css"
 import { MainLink } from '../Link/MainLink';
 import logo from "../../Image/Layer1.png"
 import axios from 'axios';
-import {reactLocalStorage} from 'reactjs-localstorage';
 import {useHistory} from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -26,8 +27,15 @@ const Login = () => {
         event.preventDefault();
         axios.post(`${MainLink}/api/v1/otp/verify/`, {
             phone_number: number,
-        }).then(response => localStorage.setItem('key', response.data.key))
-        redirect.push(`/Login-Confirmation`)
+        }).then(response => {if (response) {
+            localStorage.setItem('key', response.data.key)
+            redirect.push("/Login-Confirmation")
+        }}).catch((error) => {
+            if(error.response){
+              toast.error(error.response.data.phone_number.toString())
+            //   console.log(error.response.data.phone_number.toString());
+            }
+        });
 
     }
 
@@ -48,6 +56,7 @@ const Login = () => {
                     <p>اکانت ندارید ؟ <a>ثبت نام</a></p>
                 </section>
         </form>
+        <ToastContainer />
     </div>
     )
     }

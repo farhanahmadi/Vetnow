@@ -107,7 +107,9 @@ export default function Reports() {
                     {report.total_sells_per_month && <p> کل فروش از این دسته بندی {report.total_sells_per_month}</p>}
                     {report.gains && <p>سود از فروش {report.gains}</p>}
                 </section>
+                <div className={styles.submitBtnDiv}>
                 <input type="submit" className={styles.submitBtn} value="دریافت گزارش" />
+                </div>
                 </form>
             </section>
             <section className={styles.sidebar}>

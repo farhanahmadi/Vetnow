@@ -63,7 +63,7 @@ export default function OrdersList() {
         <div className={styles.container}>
             <section className={styles.main}>
                <section className={styles.tableHeader}>
-                    <h3 style={{textAlign: 'right'}}>تخفیف ها</h3>
+                    <h3 style={{textAlign: 'right'}}>لیست سفارشات</h3>
                </section>
                <section className={styles.searchTableHeader}>
                    <div className={styles.searchBox}>
@@ -74,7 +74,7 @@ export default function OrdersList() {
                     <h3>جستجو در سفارشات</h3>
                    </div>
                </section>
-               <table dir="rtl">
+               <table dir="rtl" className={styles.ordersTable}>
                    <thead>
                     <tr>
                         <th>ID</th>
@@ -97,7 +97,7 @@ export default function OrdersList() {
                         <td>{item.confirmation? "تایید شده" : "تایید نشده"}</td>
                         {item.confirmation ? <td style={{color: 'green'}}>تایید شده</td> : <td style={{color: 'red'}}>تایید نشده</td>}
                         <td>{shamsi.gregorianToJalali(item.created)}</td>
-                        <td><Link to={`/Edit-Order/${item.id}/${item.order_id}`}>ویرایش</Link></td>
+                        <td><button className={styles.editButton}><Link to={`/Edit-Order/${item.id}/${item.order_id}`}>ویرایش</Link></button></td>
                      </tr>)}
                      </tbody>
                 </table>

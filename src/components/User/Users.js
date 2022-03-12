@@ -74,7 +74,7 @@ const Users = () => {
                     <h3>جستجو در کاربران</h3>
                    </div>
                </section>
-               <table dir="rtl">
+               <table dir="rtl" className={styles.usersTable}>
                <tbody>
                     <tr>
                         <th>ID</th>
@@ -90,7 +90,7 @@ const Users = () => {
                         <td>{item.first_name}</td>
                         <td>{item.last_name}</td>
                         <td>{item.email}</td>
-                        <td><Link to={`/Edit-User/${item.id}`}>ویرایش</Link></td>
+                        <td><button className={styles.editButton}><Link to={`/Edit-User/${item.id}`}>ویرایش</Link></button></td>
                      </tr>)}
                      </tbody>
                 </table>

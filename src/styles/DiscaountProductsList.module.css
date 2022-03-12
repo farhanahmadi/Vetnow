@@ -2,13 +2,14 @@
     font-family: "sansiran";
     src: url(../fonts//Sansiran.ttf);
 }
-.container{
+
+.container {
     display: flex;
     justify-content: space-between;
 }
 
 
-.main{
+.main {
     width: calc(calc(400% / 5) - 20px);
     margin-top: 50px;
     padding: 20px;
@@ -19,7 +20,8 @@
     min-height: calc(100vh - 125px);
 
 }
-.searchTableHeader{
+
+.searchTableHeader {
     background-color: #F7F7F7;
     display: flex;
     justify-content: space-between;
@@ -31,10 +33,12 @@
     padding: 10px 0px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-.searchBox{
+
+.searchBox {
     width: 50%;
 }
-.searchInput{
+
+.searchInput {
     width: 100%;
     margin-left: 10px;
     border-radius: 5px;
@@ -42,17 +46,22 @@
     padding: 8px;
     direction: rtl;
 }
-.searchInput:focus{
+
+.searchInput:focus {
     outline: none;
 }
-.textBox{
-    width: 20%;
-}
-.textBox h3{
-    text-align: right;
+
+.textBox {
+    width: 40%;
 }
 
-.tableHeader{
+.textBox h3 {
+    text-align: right;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.tableHeader {
     background-color: #F7F7F7;
     display: flex;
     justify-content: space-between;
@@ -64,11 +73,14 @@
     padding: 10px 0px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-.tableHeader a , h3{
+
+.tableHeader a,
+h3 {
     margin: 0px 10px;
     font-family: sansiran;
 }
-.tableHeader a{
+
+.tableHeader a {
     background: none;
     border: 1px solid #C70899;
     color: #C70899;
@@ -78,6 +90,7 @@
     font-weight: bold;
     text-decoration: none;
 }
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -85,24 +98,30 @@ table {
     background-color: #F7F7F7;
     border-radius: 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  }
-tr{
+}
+
+tr {
     border-bottom: 1px solid #dddddd;
-  }
-td, th {
-    
+}
+
+td,
+th {
+
     text-align: right;
     padding: 10px 10px;
     font-family: sansiran;
 
-  }
-tr:last-child{
+}
+
+tr:last-child {
     border-bottom: none;
 }
-th{
+
+th {
     position: relative;
 }
-th::before{
+
+th::before {
     content: "";
     position: absolute;
     width: 1px;
@@ -111,14 +130,20 @@ th::before{
     left: 0;
     top: 5px;
 }
-th:last-child::before{
+
+th:last-child::before {
     width: 0px;
 }
+
+.discountTable th {
+    text-align: center;
+}
+
 .pagination {
     display: inline-block;
     margin-top: 20px;
-  }
-  
+}
+
 .pagination a {
     color: black;
     float: left;
@@ -129,51 +154,130 @@ th:last-child::before{
     font-weight: bold;
     cursor: pointer;
 
-  }
-  
+}
+
 .pagination a.active {
     background-color: #4CAF50;
     color: white;
     border-radius: 5px;
 
-  }
-.arrows{
+}
+
+.arrows {
     background-color: #d5dadf;
     border-radius: 5px;
     color: white;
 }
 
-.listBtns{
+.listBtns {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-  .sidebar{
+
+.sidebar {
     width: calc(100% / 5);
     min-height: 100%;
 
-
+}
+.deleteButton {
+    background: rgb(216, 7, 7);
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: sansiran;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 5px 5px;
+    width: 40%;
 }
 
+.editButton {
+    background: #FFCC00;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: sansiran;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 5px 5px;
+    width: 40%;
+}
+
+.editButton a {
+    text-decoration: none;
+    color: white;
+}
 @media only screen and (max-width: 575.98px) {
-   td,th{
-       padding: 10px 2px;
-       font-size: 10px;
-       white-space: nowrap;
-   }
-   .pagination a {
-       padding: 10px 6px;
-   }
-   .tableHeader{
-       width: 100%;
-   }
-   .tableHeader h3{
-       font-size: 14px;
-   }
-   .tableHeader button{
-       padding: 3px 4px;
-   }
-   th::before{
-    top: 8px;
+
+    .discountTable td,
+    th {
+        padding: 10px 2px;
+        font-size: 10px !important;
+    }
+
+    .searchTableHeader {
+        width: 100%;
+    }
+
+    table a {
+        font-size: 10px;
+    }
+
+    .searchBox {
+        width: 90%;
+        outline: none;
+    }
+
+    .textBox {
+        display: none;
+    }
+
+    .tableHeader a {
+        white-space: nowrap;
+        font-size: 10px;
+    }
+
+    .textBox {
+        width: auto;
+    }
+
+    .pagination a {
+        padding: 10px 6px;
+    }
+
+    .tableHeader {
+        width: 100%;
+    }
+
+    .tableHeader h3 {
+        font-size: 10px;
+    }
+
+    .tableHeader button {
+        padding: 3px 4px;
+    }
+
+    th::before {
+        top: 8px;
+    }
+    .deleteButton {
+        font-size: 10px !important;
+        white-space: nowrap;
+        width: 90%;
+        margin-top: 10px !important;
+    }
+
+    .editButton {
+        font-size: 10px;
+        white-space: nowrap;
+        width: 90% !important;
+
+    }
 }
-  }

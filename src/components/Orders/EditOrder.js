@@ -84,19 +84,19 @@ export default function EditOrder(props) {
                      <section key={item.id} className={styles.productsDetails}>
                      <section className={styles.labelSection}>
                          <label>نام محصول</label>
-                         <input type="text" disabled defaultValue={item.product.name} />
+                         <input type="text" disabled value={item.product.name} />
                      </section>
                      <section className={styles.labelSection}>
                          <label>تعداد</label>
-                         <input type="text" disabled defaultValue={item.quantity} />
+                         <input type="text" disabled value={item.quantity} />
                      </section>
                      <section className={styles.labelSection}>
                          <label>قیمت</label>
-                         <input type="text" disabled defaultValue={item.product.price} />
+                         <input type="text" disabled value={item.product.price} />
                      </section>
                      <section className={styles.labelSection}>
                          <label>قیمت کل این محصول</label>
-                         <input type="text" disabled defaultValue={item.total_amount} />
+                         <input type="text" disabled value={item.total_amount} />
                      </section>
                      <br />
                  </section>
@@ -162,16 +162,16 @@ export default function EditOrder(props) {
                     {data.payment_status === "p" && <option selected hidden >پرداخت موفق</option>}
                     {data.payment_status === "c" && <option selected hidden >پرداخت ناموفق</option>}
                     {data.payment_status === "r" && <option selected hidden >مرجوعی</option>}
-                    <option defaultValue="p">پرداخت موفق</option>
-                    <option defaultValue="c">پرداخت ناموفق</option>
-                    <option defaultValue="r">مرجوعی</option>
+                    <option value="p">پرداخت موفق</option>
+                    <option value="c">پرداخت ناموفق</option>
+                    <option value="r">مرجوعی</option>
                    {/* {products.map(item => <option name="products" key={item.id} defaultdefaultValue="null" defaultValue={item.id}>{item.name}</option>)} */}
                 </select>
               
               
             </section>
             <br />
-            <input className={styles.submitBtn} type="submit" defaultValue="ثبت دسته بندی " />
+            <input className={styles.submitBtn} type="submit" value="ثبت دسته بندی" />
         </form>
         <section className={styles.sidebar}>
          <Sidebar  />

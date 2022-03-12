@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react'
 import styles from "../../styles/EditCategory.module.css"
 import { MainLink } from '../Link/MainLink'
 import Sidebar from '../Sidebar'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const EditCategory = (props) => {
@@ -50,8 +52,18 @@ const EditCategory = (props) => {
             headers:{
                 'Authorization': 'Token '+ localStorage.getItem('token'), 
             }
-        }).then(res => console.log(res))
-        redirect.push(`/Edit-Category/${data.subcategoryName.split(" ").join("-")}`)
+        }).then((res) => {
+            if (res) {
+              toast.success("دسته بندی با موفقیت ویرایش شد")
+              setTimeout(() => {
+                  redirect.push(`/Categories-List`)
+              },5000)
+            }
+          }).catch((error) => {
+            if(error.response){
+            toast.error("موارد وارد شده صحیح نمیباشد")
+            }
+        });
         
     }
     return (
@@ -77,6 +89,7 @@ const EditCategory = (props) => {
         <section className={styles.sidebar}>
          <Sidebar  />
         </section>
+        <ToastContainer />
     </div>
     )
 }

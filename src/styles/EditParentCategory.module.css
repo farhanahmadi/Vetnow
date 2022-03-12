@@ -2,12 +2,14 @@
     font-family: "iranyekan";
     src: url(../fonts/BYekan.ttf);
 }
-.container{
+
+.container {
     display: flex;
     justify-content: right;
     font-family: iranyekan;
 }
-.main{
+
+.main {
     width: calc(400% / 5);
     margin-top: 50px;
     padding: 20px;
@@ -18,21 +20,26 @@
     min-height: calc(100vh - 125px);
 
 }
-.header{
+
+.header {
     width: 100%;
 }
-.header h3{
+
+.header h3 {
     text-align: right;
 }
-.inputs{
+
+.inputs {
     text-align: center;
     display: grid;
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr;
     width: 100%;
     column-gap: 10px;
     row-gap: 20px;
 }
-.inputs input , select{
+
+.inputs input,
+select {
     border-radius: 5px;
     border: 1px solid #bbbbbb;
     text-align: right;
@@ -42,16 +49,20 @@
     font-weight: bold;
     font-family: iranyekan;
 }
-.inputs input , select:focus{
-   outline: none;
+
+.inputs input,
+select:focus {
+    outline: none;
 }
-.sidebar{
+
+.sidebar {
     width: calc(100% / 5);
     min-height: 100%;
 
 }
-.submitBtn{
-    margin: 10px 5px 0px 5px ;
+
+.submitBtn {
+    margin: 10px 5px 0px 5px;
     background: #C70899;
     color: white;
     border: none;
@@ -63,8 +74,9 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
 }
-.delButton{
-    margin: 10px 5px 0px 5px ;
+
+.delButton {
+    margin: 10px 5px 0px 5px;
     background: #c70808;
     color: white;
     border: none;
@@ -76,8 +88,15 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
 }
-.btns{
+
+.btns {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media only screen and (max-width: 575.98px) {
+    .inputs {
+        grid-template-columns: 1fr;
+    }
 }

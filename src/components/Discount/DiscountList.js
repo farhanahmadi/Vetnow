@@ -49,7 +49,7 @@ export default function DiscountList() {
                     <h3>تخفیف ها</h3>
                </section>
 
-               <table dir="rtl">
+               <table dir="rtl" className={styles.discountTable}>
                    <thead>
                     <tr>
                         <th>ID</th>
@@ -66,8 +66,8 @@ export default function DiscountList() {
                         <td>{item.valid_from}</td>
                         <td>{item.valid_to}</td>
                         <td>
-                            <Link to={`/Discount-Products-Edit/${item.id}`}>ویرایش</Link>
-                            <button value={item.id} onClick={discountdeletehandler}>حذف</button>
+                            <button className={styles.editButton}><Link to={`/Discount-Products-Edit/${item.id}`}>ویرایش</Link></button>
+                            <button className={styles.deleteButton} value={item.id} onClick={discountdeletehandler}>حذف</button>
                         </td>
                      </tr>)}
                      </tbody>

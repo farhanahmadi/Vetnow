@@ -5,6 +5,9 @@ import Sidebar from '../Sidebar'
 import { MainLink } from '../Link/MainLink';
 import * as shamsi from 'shamsi-date-converter';
 import Multiselect from 'multiselect-react-dropdown';
+import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function EditDiscount(props) {
     const [products , setProducts] = useState([]);
@@ -47,6 +50,7 @@ export default function EditDiscount(props) {
     const inputHandler =(event) =>{
         setData({...data ,[event.target.name]: event.target.value})
     }
+    const history = useHistory();
     const submitHandler = (event) =>{
         event.preventDefault()
         axios.put(`${MainLink}/api/v1/discount_update/${props.match.params.id}/` , {
@@ -54,10 +58,17 @@ export default function EditDiscount(props) {
             valid_from: data.valid_from,
             valid_to: data.valid_to,
             products: data.productId.length > 0 ? [...new Set(data.productId)] : ['0']
-        }).then(res => console.log(res)).catch((error) => {
-            if(error.response){
-              console.log(error.response.data); // => the response payload 
-            }
+        },{ headers:{
+            'Authorization': 'Token '+ localStorage.getItem('token'), 
+        }}).then(res => {if (res) {
+            toast.success("تخفیف با موفقیت ویراش شد")
+            setTimeout(() => {
+                history.push(`/Discount-Products-List`)
+            },5000)
+            }}).catch((error) => {
+                if(error.response){
+                toast.error("موارد وارد شده صحیح نمیباشد")
+                }
         });
     }
 

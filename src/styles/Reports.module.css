@@ -31,8 +31,9 @@
     width: 100%;
 }
 .Profit , .orders , .categoryAllSell{
-    width: 250px;
+    width: auto;
     height: 150px;
+    padding: 20px;
     background-color: rgb(243, 243, 243);
     border-radius: 10px;
     border: 1px solid rgb(233, 233, 233);
@@ -41,6 +42,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    font-size: 12px;
 }
 
 .select{
@@ -103,6 +105,11 @@
 .background{
     background-color: rgb(211, 211, 211);
 }
+.submitBtnDiv{
+    width: 100%;
+    text-align: center;
+
+}
 .submitBtn{
     margin-top: 10px;
     background: #C70899;
@@ -115,3 +122,18 @@
     cursor: pointer;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+@media only screen and (max-width: 767.98px) {
+    .box{
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        row-gap: 15px;
+        
+    }
+    .Profit , .orders , .categoryAllSell{
+        width: 100%;
+    }
+    .inputs{
+        grid-template-columns: 1fr;
+    }
+   }

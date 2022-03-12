@@ -76,7 +76,7 @@ export default function RefundsList(props) {
                     <h3>جستجو در لیست مرجوعی</h3>
                    </div>
                </section>
-             <table dir="rtl">
+             <table dir="rtl" className={styles.refundsListTable}>
                  <thead>
                   <tr>
                       <th>ID</th>
@@ -92,7 +92,7 @@ export default function RefundsList(props) {
                       <td>{item.user.username}</td>
                       <td>{shamsi.gregorianToJalali(item.created_at) + ""}</td>
                       {item.Confirmation ? <td style={{color: 'green'}}>تایید شده</td> : <td style={{color: 'red'}}>تایید نشده</td>}
-                      <td><Link to={`/Edit-Refund_Order/${item.id}`}>ویرایش</Link></td>
+                      <td><button className={styles.editButton}><Link to={`/Edit-Refund_Order/${item.id}`}>ویرایش</Link></button></td>
                    </tr>)}
                    </tbody>
               </table>

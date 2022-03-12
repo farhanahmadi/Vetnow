@@ -40,6 +40,7 @@
     margin: 15px 0px;
 }
 .topBoxDiv div{
+    margin: 5px;
     background-color: #EF394E;
     width: 200px;
     height: 150px;
@@ -52,8 +53,10 @@
     color: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     text-shadow: 2px 2px 4px #000000;
+    text-align: center;
 }
 .bottomBoxDiv div{
+    margin: 5px;
     background-color: #EF394E;
     width: 200px;
     height: 150px;
@@ -73,3 +76,27 @@
     min-height: 100%;
 
 }
+@media only screen and (max-width: 1023.98px) {
+    .barChart{
+        display: none;
+    }
+   }
+@media only screen and (max-width: 767.98px) {
+    .topBoxDiv{
+        display: grid;
+        grid-template-columns: 1fr ;
+        row-gap: 10px;
+    }
+    .topBoxDiv div{
+        margin: 0 auto!important;
+    }
+    .bottomBoxDiv div{
+        margin: 0 auto!important;
+    }
+    .bottomBoxDiv{
+        display: grid;
+        grid-template-columns: 1fr ;
+        row-gap: 10px;
+
+    }
+   }

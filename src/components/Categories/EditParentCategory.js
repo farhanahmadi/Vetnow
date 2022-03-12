@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import styles from "../../styles/EditParentCategory.module.css"
 import { MainLink } from '../Link/MainLink'
 import Sidebar from '../Sidebar'
+import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditParentCategory = () => {
     const [data , setData] = useState({
@@ -23,11 +26,26 @@ const EditParentCategory = () => {
     const inputHandler =(event) =>{
         setData({...data , parentCategory: event.target.value})
     }
+    const history = useHistory();
     const submitHandler = (event) =>{
         event.preventDefault()
         axios.put(`${MainLink}/api/v1/category/update/${data.slug}/` , {
             name: data.parentCategory,
-        }).then(res => console.log(res))
+        },{
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            }}).then((res) => {
+            if (res) {
+              toast.success("دسته بندی با موفقیت ویرایش شد")
+              setTimeout(() => {
+                  history.push(`/Categories-List`)
+              },5000)
+            }
+          }).catch((error) => {
+            if(error.response){
+            toast.error("موارد وارد شده صحیح نمیباشد")
+            }
+        });
     }
     const categoryDeleteHandler =(slug) =>{
         console.log(slug);
@@ -43,7 +61,7 @@ const EditParentCategory = () => {
             <section className={styles.inputs} dir='rtl'>
                 <select  onChange={e => categoryHandler(e)}>
                     <option selected>انتخاب دسته بندی</option>
-                   {category.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
+                   {category.map(item => item.parent.length > 0 && <option key={item.id} value={item.id}>{item.name}</option>)}
 
                 </select>
                 <input type="text" value={data.parentCategory} placeholder="نام جدید دسته بندی را وارد کنید" name="parentCategory" onChange={inputHandler} />
@@ -57,6 +75,7 @@ const EditParentCategory = () => {
         <section className={styles.sidebar}>
          <Sidebar  />
         </section>
+        <ToastContainer />
     </div>
     )
 }

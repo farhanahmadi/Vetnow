@@ -32,9 +32,13 @@ const LoginConfirmation = () => {
                 localStorage.setItem('token' , response.data.token)
                 redirect.push('/Admin-MainPanel')
             }else{
-               toast.error("شما ادمین نیستید",);
+               toast.error("شما ادمین نیستید");
             }
-        })
+        }).catch((error) => {
+            if(error.response){
+              toast.error("رمز وارد شده اشتباه میباشد")
+            }
+        });
 
     }
 

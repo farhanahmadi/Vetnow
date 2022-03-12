@@ -79,7 +79,7 @@ const CategoriesList = () => {
                     <h3>جستجو در دسته بندی ها</h3>
                    </div>
                </section>
-               <table dir="rtl">
+               <table dir="rtl" className={styles.CategoriesListTable}>
                    <thead>
                     <tr>
                         <th>ID</th>
@@ -95,8 +95,8 @@ const CategoriesList = () => {
                         <td>{item.name}</td>
                         <td>{item.name}</td>
                         <td>
-                        <Link to={`Edit-Category/${item.slug}`}> ویرایش دسته بندی</Link>
-                        <button onClick={() => deleteHandler(item.slug)}>حذف دسته بندی</button>
+                        <button className={styles.editButton}><Link to={`Edit-Category/${item.slug}`}> ویرایش دسته بندی</Link></button>
+                        <button className={styles.deleteButton} onClick={() => deleteHandler(item.slug)}>حذف دسته بندی</button>
                         </td>
                      </tr>
                     )}

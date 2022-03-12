@@ -6,6 +6,9 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { MainLink } from '../Link/MainLink';
+import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const EditProduct  = (props) => {
@@ -152,6 +155,7 @@ const EditProduct  = (props) => {
     }
     // 
     // ersal data be database
+    const history = useHistory();
     const submitHandler = async (event) =>{
         event.preventDefault();
         const formD = new FormData()
@@ -170,7 +174,18 @@ const EditProduct  = (props) => {
         fetch(`${MainLink}/api/v1/product/update/${props.match.params.slug}/`,{
             method:"PUT",
             body:formD
-        }).then(res => console.log(res))
+        }).then(res => {
+            if(res.status !== 400 & res.status !== 401){
+                res.json().then(json => {
+                    toast.success("محصول با موفقیت ویرایش شد")
+                    setTimeout(() => {
+                        history.push(`/Products-List`)
+                    },5000)
+                  });
+            }else{
+                    toast.error("موارد وارد شده صحیح نمیباشد")
+            }
+        })
     }
     // 
     return (
@@ -309,6 +324,7 @@ const EditProduct  = (props) => {
             <section className={styles.sidebar}>
              <Sidebar  />
             </section>
+            <ToastContainer />
         </div>
     )
 }

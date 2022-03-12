@@ -1,9 +1,14 @@
 import React,{useState , useEffect , useRef} from 'react'
 import styles from "../../styles/EditUser.module.css"
 import Sidebar from '../Sidebar'
-import axios
- from 'axios'
+import axios from 'axios'
 import { MainLink } from '../Link/MainLink'
+import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
 const EditUser = (props) => {
 
 
@@ -134,6 +139,7 @@ const EditUser = (props) => {
 
 
     // ersal data be database
+    const history = useHistory();
     const submitHandler = async (event) =>{
         event.preventDefault();
         const formD = new FormData()
@@ -161,9 +167,23 @@ const EditUser = (props) => {
         formD.append('full_name' , data.full_name)
         formD.append('phone_number' , data.phone_number)
         fetch(`${MainLink}/api/v1/user/update/${props.match.params.id}/`,{
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            },
             method:"PUT",
             body:formD
-        }).then(res => console.log(res))
+        }).then(res =>{
+            if(res.status !== 401 & res.status !== 400 ){
+                res.json().then(json => {
+                    toast.success("کاربر با موفقیت ویرایش شد")
+                    setTimeout(() => {
+                        history.push(`/Users`)
+                    },5000)
+                  });
+            }else{
+                toast.error("موارد وارد شده صحیح نمیباشد")
+            }
+      })
     }
     // 
 
@@ -267,6 +287,7 @@ const EditUser = (props) => {
             <section className={styles.sidebar}>
              <Sidebar  />
             </section>
+            <ToastContainer />
         </div>
     )
 }

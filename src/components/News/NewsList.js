@@ -87,7 +87,7 @@ const NewsList = () => {
                     <h3>جستجو در اخبار</h3>
                    </div>
                </section>
-             <table dir="rtl">
+             <table dir="rtl" className={styles.newsTable}>
                 <thead>
                   <tr>
                       <th>ID</th>
@@ -104,8 +104,8 @@ const NewsList = () => {
                       <td>{rows.title}</td>
                       <td>{rows.created_at}</td>
                       <td>
-                        <Link to={`/Edit-News/${rows.slug}`}>ویرایش</Link>
-                        <button onClick={() => deleteHandler(rows.slug)}>حذف</button>
+                        <button className={styles.editButton}><Link to={`/Edit-News/${rows.slug}`}>ویرایش</Link></button>
+                        <button className={styles.deleteButton} onClick={() => deleteHandler(rows.slug)}>حذف</button>
                         </td>
                    </tr>)}
                    </tbody>

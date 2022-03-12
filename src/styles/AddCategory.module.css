@@ -15,6 +15,8 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    min-height: calc(100vh - 125px);
+
 }
 .header{
     width: 100%;
@@ -45,6 +47,8 @@
 }
 .sidebar{
     width: calc(100% / 5);
+    min-height: 100%;
+
 }
 .submitBtn{
     margin-top: 10px;
@@ -59,3 +63,9 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
 }
+@media only screen and (max-width: 575.98px) {
+    .inputs{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+   }

@@ -2,6 +2,9 @@ import React,{useState , useRef} from 'react'
 import styles from "../../styles/AddUser.module.css"
 import { MainLink } from '../Link/MainLink'
 import Sidebar from '../Sidebar'
+import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -95,6 +98,7 @@ const AddUser = () => {
     // 
 
     // ersal data be database
+    const history = useHistory();
     const submitHandler = async (event) =>{
         event.preventDefault();
         const formD = new FormData()
@@ -123,9 +127,23 @@ const AddUser = () => {
         formD.append('phone_number' , data.phone_number)
         console.log(formD);
         fetch(`${MainLink}/api/v1/user/create/`,{
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            },
             method:"POST",
             body:formD
-        }).then(res => console.log(res))
+        }).then(response => {
+            if(response.status !== 401 & response.status !== 400 ){
+                response.json().then(json => {
+                    toast.success("کاربر با موفقیت ساخته شد")
+                    setTimeout(() => {
+                        history.push(`/Users`)
+                    },5000)
+                  });
+            }else{
+                    toast.error("موارد وارد شده صحیح نمیباشد")
+            }
+      })
     }
     // 
 
@@ -230,6 +248,7 @@ const AddUser = () => {
             <section className={styles.sidebar}>
              <Sidebar  />
             </section>
+            <ToastContainer />
         </div>
     )
 }

@@ -3,6 +3,9 @@ import styles from "../../styles/Discount.module.css"
 import { MainLink } from '../Link/MainLink';
 import Sidebar from '../Sidebar'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function AddDiscount() {
@@ -26,6 +29,7 @@ export default function AddDiscount() {
     const inputHandler =(event) =>{
         setData({...data , [event.target.name]: event.target.value})
     }
+    const history = useHistory();
     const submitHandler = (event) =>{
         event.preventDefault()
         axios.post(`${MainLink}/api/v1/discount/create/` , {
@@ -33,7 +37,20 @@ export default function AddDiscount() {
             valid_from: data.valid_from,
             valid_to: data.valid_to,
             products: data.product,
-        }).then(res => console.log(res))
+        },{
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            },
+        }).then(res => {if (res) {
+            toast.success("تخفیف با موفقیت اعمال شد")
+            setTimeout(() => {
+                history.push(`/Discount-Products-List`)
+            },5000)
+            }}).catch((error) => {
+                if(error.response){
+                toast.error("موارد وارد شده صحیح نمیباشد")
+                }
+        });
     }
     return (
         <div className={styles.container}>
@@ -57,6 +74,7 @@ export default function AddDiscount() {
         <section className={styles.sidebar}>
          <Sidebar  />
         </section>
+        <ToastContainer />
     </div>
     )
 }

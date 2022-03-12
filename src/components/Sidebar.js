@@ -20,11 +20,16 @@ const Sidebar = () => {
                     <li><Link style={{width: '100%'}} to="/NewsList">اخبار <FaNewspaper /></Link></li>
                 </ul>
                 <ul className={styles.adminSideBarMobile}>
-                    <li><Link to="/Products-List"><FaCartPlus /></Link></li>
-                    <li><Link to="/Users"><FaUser /></Link></li>
-                    <li><Link to="#"><FaPhone /></Link></li>
-                    <li><Link to="#"><FaNewspaper /></Link></li>
-                    <li><Link to="#"><FaPager /></Link></li>
+                    <li><Link style={{width: '100%'}} to="/Admin-MainPanel"><FaHome /></Link></li>
+                    <li><Link style={{width: '100%'}} to="/Products-List"><FaCartPlus /></Link></li>
+                    <li><Link style={{width: '100%'}} to="/Users"><FaUser /></Link></li>
+                    <li><Link style={{width: '100%'}} to="#"><FaPhone /></Link></li>
+                    <li><Link style={{width: '100%'}} to="/Reports"><FaPaperclip /></Link></li>
+                    <li><Link style={{width: '100%'}} to="/Discount-Products-List"><FaPercent /></Link></li>
+                    <li><Link style={{width: '100%'}} to="/Categories-List"><FaCompress /></Link></li>
+                    <li><Link style={{width: '100%'}} to="/Order-List"><FaShoppingBag /></Link></li>
+                    <li><Link style={{width: '100%'}} to="/Refunds-List"><FaArrowsAlt /></Link></li>
+                    <li><Link style={{width: '100%'}} to="/NewsList"><FaNewspaper /></Link></li>
                 </ul>
             </section>
     )
