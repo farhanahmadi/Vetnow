@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from "../../styles/Login.module.css"
+import styles from "../../styles/login.module.css"
 import { MainLink } from '../Link/MainLink';
 import logo from "../../Image/Layer1.png"
 import {reactLocalStorage} from 'reactjs-localstorage';
