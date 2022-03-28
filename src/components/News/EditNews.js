@@ -4,9 +4,10 @@ import Sidebar from '../Sidebar'
 import {CKEditor} from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import { MainLink } from '../Link/MainLink';
-
+import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const EditNews = (props) => {
@@ -51,7 +52,7 @@ const EditNews = (props) => {
      useEffect( async () =>  {
         const users = await axios.get(usersLink);
         setAdmins(await users.data)
-        const URL = `${MainLink}/api/v1/news/detail/${props.match.params.slug}/`
+        const URL = `${MainLink}/api/v1/news/${props.match.params.slug}/`
         const inputValue = await axios.get(URL);
         setData(await {...data , 
             title: inputValue.data.title,
@@ -90,6 +91,7 @@ const EditNews = (props) => {
     }
     // 
     // ersal data be database
+    const history = useHistory();
     const submitHandler = async (event) =>{
         event.preventDefault();
         const formD = new FormData()
@@ -105,7 +107,15 @@ const EditNews = (props) => {
                 'Authorization': 'Token '+ localStorage.getItem('token'), 
             }),
             body:formD,
-        }).then(res => console.log(res))
+        }).then(response => {if (response) {
+            toast.success("اخبار با موفقیت ویرایش شد")
+            setTimeout(() => {
+                history.push(`/NewsList`)
+            },5000)
+        }})
+        .catch(error =>{
+            toast.error("لطفا دوباره تلاش کنید")
+        });
     }
     // 
     return (
@@ -169,6 +179,7 @@ const EditNews = (props) => {
             <section className={styles.sidebar}>
              <Sidebar  />
             </section>
+            <ToastContainer />
         </div>
     )
 }

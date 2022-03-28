@@ -52,6 +52,7 @@ const AddProduct = () => {
             console.log(data);
         }else{
             setPdf(event.target.files[0])
+            setData({...data, pdffile: event.target.files[0]})
         }
         
         }

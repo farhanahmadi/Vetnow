@@ -31,7 +31,7 @@
     width: 100%;
 }
 .Profit , .orders , .categoryAllSell{
-    width: auto;
+    width: 200px;
     height: 150px;
     padding: 20px;
     background-color: rgb(243, 243, 243);

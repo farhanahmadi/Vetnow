@@ -6,6 +6,8 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { MainLink } from '../Link/MainLink';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const AddNews = () => {
@@ -93,7 +95,15 @@ const AddNews = () => {
                 'Authorization': 'Token '+ localStorage.getItem('token'), 
             }),
             body:formD
-        }).then(response => console.log(response));
+        }).then(response => {if (response) {
+            toast.success("اخبار با موفقیت ثبت شد")
+            setTimeout(() => {
+                history.push(`/NewsList`)
+            },5000)
+        }})
+        .catch(error =>{
+            toast.error("لطفا دوباره تلاش کنید")
+        });
     }
 
     // 
@@ -151,7 +161,7 @@ const AddNews = () => {
             <section className={styles.sidebar}>
              <Sidebar  />
             </section>
-            
+            <ToastContainer />
         </div>
     )
 }

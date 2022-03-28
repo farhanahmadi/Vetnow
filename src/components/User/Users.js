@@ -9,6 +9,11 @@ import { FaSearch  } from 'react-icons/fa';
 
 const Users = () => {
 
+    const refreshPage = ()=>{
+        window.location.reload();
+     }
+
+
     const [data , setData] = useState([])
     const [paginateBtn , setPaginateBtn] = useState([])
     const [count , setCount] = useState()
@@ -31,8 +36,8 @@ const Users = () => {
             },
             }).then(res => setCount(res.data.count))
             if (serach === "") {
-                for (let index = 0; index < count/2; index++) {
-                    paginateBtn.length < count/2 && setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
+                for (let index = 0; index < count/20; index++) {
+                    paginateBtn.length < count/20 && setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
             }}else{
                 if (count === 1) {
                     setPaginateBtn([0])
@@ -41,7 +46,7 @@ const Users = () => {
                     !extraPaginateBtn && setPaginateBtn([])
                     paginateBtn.length == 0 && setExtraPaginateBtn(true)
                     setExtraPaginateBtn(true)
-                    for (let index = 0; index < Math.ceil(count/2); index++) {
+                    for (let index = 0; index < Math.ceil(count/20); index++) {
                         setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
                     console.log(count);
 
@@ -57,6 +62,18 @@ const Users = () => {
 
     const searchHandler = (event) =>{
         setSearch(event.target.value)
+    }
+
+    const userDeleteHandler = (id) =>{
+        const result = window.confirm("آیا مطمعن هستید ؟ ")
+        if (result) {
+            axios.delete(`${MainLink}/api/v1/user/delete/${id}/`,{
+                headers:{
+                    'Authorization': 'Token '+ localStorage.getItem('token'), 
+                }}).then(response => {if (response) {
+                    refreshPage();
+            }})
+        }
     }
     return (
         <div className={styles.container}>
@@ -90,7 +107,10 @@ const Users = () => {
                         <td>{item.first_name}</td>
                         <td>{item.last_name}</td>
                         <td>{item.email}</td>
-                        <td><button className={styles.editButton}><Link to={`/Edit-User/${item.id}`}>ویرایش</Link></button></td>
+                        <td>
+                            <Link to={`/Edit-User/${item.id}`}><button className={styles.editButton}>ویرایش</button></Link>
+                            <button onClick={() => userDeleteHandler(item.id)} className={styles.deleteButton}>حذف</button>
+                            </td>
                      </tr>)}
                      </tbody>
                 </table>

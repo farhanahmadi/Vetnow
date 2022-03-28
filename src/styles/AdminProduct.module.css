@@ -189,7 +189,25 @@ th:last-child::before {
     text-decoration: none;
     color: white;
 }
+.deleteButton {
+    background: rgb(239, 58, 79);
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: sansiran;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 5px 5px;
+    width: 100%;
+}
 
+.deleteButton a {
+    text-decoration: none;
+    color: white;
+}
 @media only screen and (max-width: 575.98px) {
 
     .productsTable td,

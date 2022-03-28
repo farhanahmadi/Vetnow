@@ -9,6 +9,8 @@ import { FaSearch  } from 'react-icons/fa';
 
 
 export default function OrdersList() {
+
+    
  
     const [data , setData] = useState([])
     const [paginateBtn , setPaginateBtn] = useState([])
@@ -32,8 +34,8 @@ export default function OrdersList() {
             },
             }).then(res => setCount(res.data.count))
             if (serach === "") {
-                for (let index = 0; index < count/2; index++) {
-                    paginateBtn.length < count/2 && setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
+                for (let index = 0; index < count/20; index++) {
+                    paginateBtn.length < count/20 && setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
             }}else{
                 if (count === 1) {
                     setPaginateBtn([0])
@@ -42,7 +44,7 @@ export default function OrdersList() {
                     !extraPaginateBtn && setPaginateBtn([])
                     paginateBtn.length == 0 && setExtraPaginateBtn(true)
                     setExtraPaginateBtn(true)
-                    for (let index = 0; index < Math.ceil(count/2); index++) {
+                    for (let index = 0; index < Math.ceil(count/20); index++) {
                         setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
                     console.log(count);
 
@@ -97,7 +99,7 @@ export default function OrdersList() {
                         <td>{item.confirmation? "تایید شده" : "تایید نشده"}</td>
                         {item.confirmation ? <td style={{color: 'green'}}>تایید شده</td> : <td style={{color: 'red'}}>تایید نشده</td>}
                         <td>{shamsi.gregorianToJalali(item.created)}</td>
-                        <td><button className={styles.editButton}><Link to={`/Edit-Order/${item.id}/${item.order_id}`}>ویرایش</Link></button></td>
+                        <td><Link to={`/Edit-Order/${item.id}/${item.order_id}`}><button className={styles.editButton}>ویرایش</button></Link></td>
                      </tr>)}
                      </tbody>
                 </table>

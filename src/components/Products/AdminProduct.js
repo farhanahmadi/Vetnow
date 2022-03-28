@@ -8,6 +8,11 @@ import { FaSearch  } from 'react-icons/fa';
 
 
 const AdminProduct = () => {
+
+    const refreshPage = ()=>{
+        window.location.reload();
+     }
+
     const [data , setData] = useState([])
     const [paginateBtn , setPaginateBtn] = useState([])
     const [count , setCount] = useState()
@@ -31,8 +36,8 @@ const AdminProduct = () => {
             },
             }).then(res => setCount(res.data.count))
             if (search === "") {
-                for (let index = 0; index < count/2; index++) {
-                    paginateBtn.length < count/2 && setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
+                for (let index = 0; index < count/20; index++) {
+                    paginateBtn.length < count/20 && setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
             }}else{
                 if (count === 1) {
                     setPaginateBtn([0])
@@ -40,7 +45,7 @@ const AdminProduct = () => {
                 else{
                     !extraPaginateBtn && setPaginateBtn([])
                     paginateBtn.length == 0 && setExtraPaginateBtn(true)
-                    for (let index = 0; index < count/2; index++) {
+                    for (let index = 0; index < count/20; index++) {
                         setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
                     console.log(count);
 
@@ -56,6 +61,14 @@ const AdminProduct = () => {
     }
     const searchHandler = (event) =>{
         setSearch(event.target.value)
+    }
+    const productDeleteHandler =(slug) =>{
+        axios.delete(`${MainLink}/api/v1/product/delete/${slug}/`,{
+            headers:{
+                'Authorization': 'Token '+ localStorage.getItem('token'), 
+            }}).then(response => {if (response) {
+                refreshPage();
+        }})
     }
     return (
         <div className={styles.container}>
@@ -91,7 +104,10 @@ const AdminProduct = () => {
                         <td>{rows.categories.map(item => item.name + " / ")}</td>
                         <td>{rows.price}</td>
                         <td>{rows.quantity}</td>
-                        <td><button className={styles.editButton}><Link to={`/Edit-Product/${rows.categories.map(item => item.id)}/${rows.slug}`}>ویرایش</Link></button></td>
+                        <td>
+                            <Link to={`/Edit-Product/${rows.categories.map(item => item.id)}/${rows.slug}`}><button className={styles.editButton}>ویرایش</button></Link>
+                            <button onClick={() => productDeleteHandler(rows.slug)} className={styles.deleteButton}>حذف</button>
+                            </td>
                      </tr>)}
                 </tbody>
                 </table>

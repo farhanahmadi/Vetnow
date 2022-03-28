@@ -4,9 +4,16 @@ import styles from "../../styles/EditOrders.module.css"
 import Sidebar from '../Sidebar'
 import { MainLink } from '../Link/MainLink';
 import * as shamsi from 'shamsi-date-converter';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useHistory } from 'react-router-dom';
+import { ProvincesNames } from '../state/ProvincesNames';
+import { cities } from '../state/Cities';
 
 export default function EditOrder(props) {
+
+    const history = useHistory();
+
 
     const [data , setData] = useState({
         products: [],
@@ -66,10 +73,16 @@ export default function EditOrder(props) {
    
     const submitHandler = (event) =>{
         event.preventDefault()
-        axios.put(`${MainLink}/api/v1/orders/${props.match.params.id}/` , {
+        axios.put(`${MainLink}/api/v1/orders/${props.match.params.id}/${props.match.params.order_id}/` , {
             payment_status: data.payment_status,
             confirmation: data.confirmation,
-        }).then(res => console.log(res))
+        }).then(res => {if (res.status === 200) {
+            toast.success("ویرایش با موفقیت انجام شد")
+            setTimeout(() => {
+                history.push("/Order-List");
+            },5000)
+
+        }})
     }
     
     return (
@@ -125,11 +138,11 @@ export default function EditOrder(props) {
                 </section>
                 <section className={styles.labelSection}>
                     <label>استان</label>
-                    <input type="text" disabled defaultValue={data.state} />
+                    <input type="text" disabled value={data.state > 0 ? ProvincesNames.find(item => item.id == data.state).name : ""} />
                 </section>
                 <section className={styles.labelSection}>
                     <label>شهر</label>
-                    <input type="text" disabled defaultValue={data.city} />
+                    <input type="text" disabled value={data.city > 0 ? cities.find(item => item.id == data.city).name : ""} />
                 </section>
                 <section className={styles.labelSection}>
                     <label>آدرس</label>
@@ -176,6 +189,7 @@ export default function EditOrder(props) {
         <section className={styles.sidebar}>
          <Sidebar  />
         </section>
+        <ToastContainer />
     </div>
     )
 }

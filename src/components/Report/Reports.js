@@ -92,7 +92,7 @@ export default function Reports() {
                         {sells.order_count}
                     </div>
                     <div className={styles.categoryAllSell}>
-                        <p>سود تمام دسته بندی ها</p>
+                        <p>فروش کل</p>
                         {sells.total_sells}
                     </div>
                 </section>

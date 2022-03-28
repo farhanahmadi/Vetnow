@@ -16,7 +16,7 @@ const Sidebar = () => {
                     <li><Link style={{width: '100%'}} to="/Discount-Products-List">تخفیف محصولات <FaPercent /></Link></li>
                     <li><Link style={{width: '100%'}} to="/Categories-List">لیست دسته بندی ها <FaCompress /></Link></li>
                     <li><Link style={{width: '100%'}} to="/Order-List">لیست سفارشات <FaShoppingBag /></Link></li>
-                    <li><Link style={{width: '100%'}} to="/Refunds-List">مرجوعی <FaArrowsAlt /></Link></li>
+                    <li><Link style={{width: '100%'}} to="/Refunds-List"> درخواست های مرجوعی <FaArrowsAlt /></Link></li>
                     <li><Link style={{width: '100%'}} to="/NewsList">اخبار <FaNewspaper /></Link></li>
                 </ul>
                 <ul className={styles.adminSideBarMobile}>

@@ -30,7 +30,7 @@ export default function EditDiscount(props) {
             productId: res.data.products.map(item => item.id),
             discountPercent: res.data.discount_percent,
             valid_from: shamsi.gregorianToJalali(res.data.valid_from.split("-")).join("-"),
-            valid_to: shamsi.gregorianToJalali(res.data.valid_from.split("-")).join("-")
+            valid_to: shamsi.gregorianToJalali(res.data.valid_to.split("-")).join("-")
             }))
 
            
@@ -111,6 +111,7 @@ export default function EditDiscount(props) {
         <section className={styles.sidebar}>
          <Sidebar  />
         </section>
+        <ToastContainer />
     </div>
     )
 }

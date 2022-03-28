@@ -1,0 +1,156 @@
+
+> vetnow@0.1.0 start
+> react-scripts start
+
+Starting the development server...
+
+Compiled with warnings.
+
+Warning
+(21:5) autoprefixer: end value has mixed support, consider using flex-end instead
+
+Warning
+(42:5) autoprefixer: end value has mixed support, consider using flex-end instead
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+assets by path static/ 6.65 MiB
+  assets by path static/media/*.ttf 347 KiB
+    asset static/media/BYekan.f26972c64b83c2aea5ca.ttf 224 KiB [emitted] [immutable] [from: src/fonts/BYekan.ttf] (auxiliary name: main)
+    asset static/media/Sansiran.b405362106aecf6bb79b.ttf 123 KiB [emitted] [immutable] [from: src/fonts/Sansiran.ttf] (auxiliary name: main)
+  asset static/js/bundle.js 6.21 MiB [emitted] (name: main) 1 related asset
+  asset static/media/ss.c2764613eefc35c8db38.jpg 65.2 KiB [emitted] [immutable] [from: src/Image/ss.jpg] (auxiliary name: main)
+  asset static/media/Layer1.93cde827f12ab28d47ea.png 34.3 KiB [emitted] [immutable] [from: src/Image/Layer1.png] (auxiliary name: main)
+asset index.html 1.82 KiB [emitted]
+asset asset-manifest.json 506 bytes [emitted]
+cached modules 5.37 MiB (javascript) 447 KiB (asset) 28.3 KiB (runtime) [cached] 287 modules
+./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/styles/Sidebar.module.css 4.5 KiB [built] [2 warnings]
+
+WARNING in ./src/styles/Sidebar.module.css (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/styles/Sidebar.module.css)
+Module Warning (from ./node_modules/postcss-loader/dist/cjs.js):
+Warning
+
+(21:5) autoprefixer: end value has mixed support, consider using flex-end instead
+ @ ./src/styles/Sidebar.module.css 8:6-280 22:17-24 26:7-21 58:25-39 59:36-47 59:50-64 63:6-73:7 64:54-65 64:68-82 70:42-53 70:56-70 72:21-28 83:0-250 83:0-250 84:22-29 84:33-47 84:50-64 61:4-74:5
+ @ ./src/components/Sidebar.js 5:0-50 12:15-29 14:17-36 221:17-42
+ @ ./src/components/Products/AddProduct.js 8:0-33 559:37-44
+ @ ./src/App.js 10:0-58 177:19-29
+ @ ./src/index.js 7:0-24 11:33-36
+
+WARNING in ./src/styles/Sidebar.module.css (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/styles/Sidebar.module.css)
+Module Warning (from ./node_modules/postcss-loader/dist/cjs.js):
+Warning
+
+(42:5) autoprefixer: end value has mixed support, consider using flex-end instead
+ @ ./src/styles/Sidebar.module.css 8:6-280 22:17-24 26:7-21 58:25-39 59:36-47 59:50-64 63:6-73:7 64:54-65 64:68-82 70:42-53 70:56-70 72:21-28 83:0-250 83:0-250 84:22-29 84:33-47 84:50-64 61:4-74:5
+ @ ./src/components/Sidebar.js 5:0-50 12:15-29 14:17-36 221:17-42
+ @ ./src/components/Products/AddProduct.js 8:0-33 559:37-44
+ @ ./src/App.js 10:0-58 177:19-29
+ @ ./src/index.js 7:0-24 11:33-36
+
+webpack 5.65.0 compiled with 2 warnings in 5292 ms
+
+> vetnow@0.1.0 start
+> react-scripts start
+
+Starting the development server...
+
+Compiled with warnings.
+
+Warning
+(21:5) autoprefixer: end value has mixed support, consider using flex-end instead
+
+Warning
+(42:5) autoprefixer: end value has mixed support, consider using flex-end instead
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+assets by path static/ 6.65 MiB
+  assets by path static/media/*.ttf 347 KiB
+    asset static/media/BYekan.f26972c64b83c2aea5ca.ttf 224 KiB [emitted] [immutable] [from: src/fonts/BYekan.ttf] (auxiliary name: main)
+    asset static/media/Sansiran.b405362106aecf6bb79b.ttf 123 KiB [emitted] [immutable] [from: src/fonts/Sansiran.ttf] (auxiliary name: main)
+  asset static/js/bundle.js 6.21 MiB [emitted] (name: main) 1 related asset
+  asset static/media/ss.c2764613eefc35c8db38.jpg 65.2 KiB [emitted] [immutable] [from: src/Image/ss.jpg] (auxiliary name: main)
+  asset static/media/Layer1.93cde827f12ab28d47ea.png 34.3 KiB [emitted] [immutable] [from: src/Image/Layer1.png] (auxiliary name: main)
+asset index.html 1.82 KiB [emitted]
+asset asset-manifest.json 506 bytes [emitted]
+cached modules 5.37 MiB (javascript) 447 KiB (asset) 28.3 KiB (runtime) [cached] 287 modules
+./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/styles/Sidebar.module.css 4.5 KiB [built] [2 warnings]
+
+WARNING in ./src/styles/Sidebar.module.css (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/styles/Sidebar.module.css)
+Module Warning (from ./node_modules/postcss-loader/dist/cjs.js):
+Warning
+
+(21:5) autoprefixer: end value has mixed support, consider using flex-end instead
+ @ ./src/styles/Sidebar.module.css 8:6-280 22:17-24 26:7-21 58:25-39 59:36-47 59:50-64 63:6-73:7 64:54-65 64:68-82 70:42-53 70:56-70 72:21-28 83:0-250 83:0-250 84:22-29 84:33-47 84:50-64 61:4-74:5
+ @ ./src/components/Sidebar.js 5:0-50 12:15-29 14:17-36 221:17-42
+ @ ./src/components/Products/AddProduct.js 8:0-33 559:37-44
+ @ ./src/App.js 10:0-58 177:19-29
+ @ ./src/index.js 7:0-24 11:33-36
+
+WARNING in ./src/styles/Sidebar.module.css (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/styles/Sidebar.module.css)
+Module Warning (from ./node_modules/postcss-loader/dist/cjs.js):
+Warning
+
+(42:5) autoprefixer: end value has mixed support, consider using flex-end instead
+ @ ./src/styles/Sidebar.module.css 8:6-280 22:17-24 26:7-21 58:25-39 59:36-47 59:50-64 63:6-73:7 64:54-65 64:68-82 70:42-53 70:56-70 72:21-28 83:0-250 83:0-250 84:22-29 84:33-47 84:50-64 61:4-74:5
+ @ ./src/components/Sidebar.js 5:0-50 12:15-29 14:17-36 221:17-42
+ @ ./src/components/Products/AddProduct.js 8:0-33 559:37-44
+ @ ./src/App.js 10:0-58 177:19-29
+ @ ./src/index.js 7:0-24 11:33-36
+
+webpack 5.65.0 compiled with 2 warnings in 5200 ms
+
+> vetnow@0.1.0 start
+> react-scripts start
+
+Starting the development server...
+
+Compiled with warnings.
+
+Warning
+(21:5) autoprefixer: end value has mixed support, consider using flex-end instead
+
+Warning
+(42:5) autoprefixer: end value has mixed support, consider using flex-end instead
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+assets by path static/ 6.65 MiB
+  assets by path static/media/*.ttf 347 KiB
+    asset static/media/BYekan.f26972c64b83c2aea5ca.ttf 224 KiB [emitted] [immutable] [from: src/fonts/BYekan.ttf] (auxiliary name: main)
+    asset static/media/Sansiran.b405362106aecf6bb79b.ttf 123 KiB [emitted] [immutable] [from: src/fonts/Sansiran.ttf] (auxiliary name: main)
+  asset static/js/bundle.js 6.22 MiB [emitted] (name: main) 1 related asset
+  asset static/media/ss.c2764613eefc35c8db38.jpg 65.2 KiB [emitted] [immutable] [from: src/Image/ss.jpg] (auxiliary name: main)
+  asset static/media/Layer1.93cde827f12ab28d47ea.png 34.3 KiB [emitted] [immutable] [from: src/Image/Layer1.png] (auxiliary name: main)
+asset index.html 1.82 KiB [emitted]
+asset asset-manifest.json 506 bytes [emitted]
+cached modules 5.38 MiB (javascript) 447 KiB (asset) 28.3 KiB (runtime) [cached] 287 modules
+./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/styles/Sidebar.module.css 4.5 KiB [built] [2 warnings]
+
+WARNING in ./src/styles/Sidebar.module.css (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/styles/Sidebar.module.css)
+Module Warning (from ./node_modules/postcss-loader/dist/cjs.js):
+Warning
+
+(21:5) autoprefixer: end value has mixed support, consider using flex-end instead
+ @ ./src/styles/Sidebar.module.css 8:6-280 22:17-24 26:7-21 58:25-39 59:36-47 59:50-64 63:6-73:7 64:54-65 64:68-82 70:42-53 70:56-70 72:21-28 83:0-250 83:0-250 84:22-29 84:33-47 84:50-64 61:4-74:5
+ @ ./src/components/Sidebar.js 5:0-50 12:15-29 14:17-36 221:17-42
+ @ ./src/components/Products/AddProduct.js 8:0-33 562:37-44
+ @ ./src/App.js 10:0-58 177:19-29
+ @ ./src/index.js 7:0-24 11:33-36
+
+WARNING in ./src/styles/Sidebar.module.css (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[6].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/styles/Sidebar.module.css)
+Module Warning (from ./node_modules/postcss-loader/dist/cjs.js):
+Warning
+
+(42:5) autoprefixer: end value has mixed support, consider using flex-end instead
+ @ ./src/styles/Sidebar.module.css 8:6-280 22:17-24 26:7-21 58:25-39 59:36-47 59:50-64 63:6-73:7 64:54-65 64:68-82 70:42-53 70:56-70 72:21-28 83:0-250 83:0-250 84:22-29 84:33-47 84:50-64 61:4-74:5
+ @ ./src/components/Sidebar.js 5:0-50 12:15-29 14:17-36 221:17-42
+ @ ./src/components/Products/AddProduct.js 8:0-33 562:37-44
+ @ ./src/App.js 10:0-58 177:19-29
+ @ ./src/index.js 7:0-24 11:33-36
+
+webpack 5.65.0 compiled with 2 warnings in 6276 ms

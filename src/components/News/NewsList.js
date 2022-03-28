@@ -8,12 +8,15 @@ import { FaSearch  } from 'react-icons/fa';
 
 
 const NewsList = () => {
+  const refreshPage = ()=>{
+    window.location.reload();
+ }
+ 
   const [data , setData] = useState([])
   const [paginateBtn , setPaginateBtn] = useState([])
   const [count , setCount] = useState()
   const [paginate , setPaginate] = useState(1);
   const [id , setId] = useState(1);
-  const [reload , setReload] = useState('');
   const [serach , setSearch] = useState("");
   const [extraPaginateBtn , setExtraPaginateBtn] = useState(false)
   
@@ -21,6 +24,7 @@ const NewsList = () => {
 
 
   useEffect( async () => {
+
     await axios.get(URL , {
         headers:{
             'Authorization': 'Token '+ localStorage.getItem('token'), 
@@ -32,8 +36,8 @@ const NewsList = () => {
         },
         }).then(res => setCount(res.data.count))
         if (serach === "") {
-            for (let index = 0; index < count/2; index++) {
-                paginateBtn.length < count/2 && setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
+            for (let index = 0; index < count/20; index++) {
+                paginateBtn.length < count/20 && setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
         }}else{
             if (count === 1) {
                 setPaginateBtn([0])
@@ -42,7 +46,7 @@ const NewsList = () => {
                 !extraPaginateBtn && setPaginateBtn([])
                 paginateBtn.length == 0 && setExtraPaginateBtn(true)
                 setExtraPaginateBtn(true)
-                for (let index = 0; index < Math.ceil(count/2); index++) {
+                for (let index = 0; index < Math.ceil(count/20); index++) {
                     setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
                 console.log(count);
 
@@ -54,13 +58,13 @@ const NewsList = () => {
       
 
   const deleteHandler = (event) =>{
-    setReload(false)
     axios.delete(`${MainLink}/api/v1/news/delete/${event}/`,{
       headers:{
-        'Authorization': 'Token '+ localStorage.getItem('key'),  
+        'Authorization': 'Token '+ localStorage.getItem('token'),  
     },
-    })
-    setReload(event)
+    }).then(response => {if (response) {
+      refreshPage();
+    }})
   }
 
   const clickHandler = (number) =>{
@@ -104,7 +108,7 @@ const NewsList = () => {
                       <td>{rows.title}</td>
                       <td>{rows.created_at}</td>
                       <td>
-                        <button className={styles.editButton}><Link to={`/Edit-News/${rows.slug}`}>ویرایش</Link></button>
+                        <Link to={`/Edit-News/${rows.slug}`}><button className={styles.editButton}>ویرایش</button></Link>
                         <button className={styles.deleteButton} onClick={() => deleteHandler(rows.slug)}>حذف</button>
                         </td>
                    </tr>)}

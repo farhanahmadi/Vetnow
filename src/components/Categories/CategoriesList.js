@@ -8,6 +8,12 @@ import { FaSearch  } from 'react-icons/fa';
 
 
 const CategoriesList = () => {
+
+    const refreshPage = ()=>{
+        window.location.reload();
+     }
+
+
     const [data , setData] = useState([])
     const [paginateBtn , setPaginateBtn] = useState([])
     const [count , setCount] = useState()
@@ -15,6 +21,7 @@ const CategoriesList = () => {
     const [id , setId] = useState(1);
     const [extraPaginateBtn , setExtraPaginateBtn] = useState(false)
     const [search , setSearch] = useState("");
+
 
     
     let URL = `${MainLink}/api/v1/pagination/categories/?page=${paginate}&search=${search}`;
@@ -30,8 +37,8 @@ const CategoriesList = () => {
             },
             }).then(res => setCount(res.data.count))
             if (search === "") {
-                for (let index = 0; index < count/2; index++) {
-                    paginateBtn.length < count/2 && setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
+                for (let index = 0; index < count/20; index++) {
+                    paginateBtn.length < count/20 && setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
             }}else{
                 if (count === 1) {
                     setPaginateBtn([0])
@@ -39,7 +46,7 @@ const CategoriesList = () => {
                 else{
                     !extraPaginateBtn && setPaginateBtn([])
                     paginateBtn.length == 0 && setExtraPaginateBtn(true)
-                    for (let index = 0; index < count/2; index++) {
+                    for (let index = 0; index < count/20; index++) {
                         setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
                     console.log(count);
 
@@ -61,6 +68,8 @@ const CategoriesList = () => {
         axios.delete(`${MainLink}/api/v1/category/delete/${slug}/`,{
             headers:{
                 'Authorization': 'Token '+ localStorage.getItem('token'), 
+            }}).then(response => {if (response) {
+                refreshPage();
             }})
     }
     return (
@@ -95,7 +104,7 @@ const CategoriesList = () => {
                         <td>{item.name}</td>
                         <td>{item.name}</td>
                         <td>
-                        <button className={styles.editButton}><Link to={`Edit-Category/${item.slug}`}> ویرایش دسته بندی</Link></button>
+                        <Link to={`Edit-Category/${item.slug}`}>  <button className={styles.editButton}> ویرایش دسته بندی</button></Link>
                         <button className={styles.deleteButton} onClick={() => deleteHandler(item.slug)}>حذف دسته بندی</button>
                         </td>
                      </tr>

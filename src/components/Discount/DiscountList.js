@@ -4,11 +4,16 @@ import Sidebar from '../Sidebar'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import { MainLink } from '../Link/MainLink';
+import * as shamsi from 'shamsi-date-converter';
 
 
 
 
 export default function DiscountList() {
+
+    const refreshPage = ()=>{
+        window.location.reload();
+     }
   
     const [data , setData] = useState([])
     const [paginateBtn , setPaginateBtn] = useState([])
@@ -29,8 +34,8 @@ export default function DiscountList() {
                 'Authorization': 'Token '+ localStorage.getItem('token'), 
             }}).then(res => setCount(res.data.count))
   
-        for (let index = 0; index < count/2; index++) {
-           paginateBtn.length < count/2 && setPaginateBtn((prevstate) => [...prevstate , index])   
+        for (let index = 0; index < count/20; index++) {
+           paginateBtn.length < count/20 && setPaginateBtn((prevstate) => [...prevstate , index])   
         }
   
         
@@ -45,7 +50,10 @@ export default function DiscountList() {
  
 
     const discountdeletehandler = (event) =>{
-        axios.delete(`${MainLink}/api/v1/discount_delete/${event.target.value}/`).then(response => console.log(response))
+        axios.delete(`${MainLink}/api/v1/discount_delete/${event.target.value}/`).then(response => {if (response) {
+            refreshPage();
+        }})
+        
     }
     return (
         <div className={styles.container}>
@@ -69,10 +77,10 @@ export default function DiscountList() {
                     {data.map(item => <tr key={item.id}> 
                         <td>{item.id}</td>
                         <td>{item.discount_percent}</td>
-                        <td>{item.valid_from}</td>
-                        <td>{item.valid_to}</td>
+                        <td>{shamsi.gregorianToJalali(item.valid_from.split("-")).join("-")}</td>
+                        <td>{shamsi.gregorianToJalali(item.valid_to.split("-")).join("-")}</td>
                         <td>
-                            <button className={styles.editButton}><Link to={`/Discount-Products-Edit/${item.id}`}>ویرایش</Link></button>
+                            <Link to={`/Discount-Products-Edit/${item.id}`}><button className={styles.editButton}>ویرایش</button></Link>
                             <button className={styles.deleteButton} value={item.id} onClick={discountdeletehandler}>حذف</button>
                         </td>
                      </tr>)}

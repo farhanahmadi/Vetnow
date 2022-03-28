@@ -60,7 +60,7 @@ const EditProduct  = (props) => {
             setData({... data , [event.target.name] : event.target.value})
         }else{
             setPdf(event.target.files[0])
-            console.log(event.target.files[0]);
+            setData({...data, pdf_file: event.target.files[0]})
         }
     }
     // 
@@ -109,7 +109,7 @@ const EditProduct  = (props) => {
       // gereftan api category ha baraye namayesh
       useEffect(async () =>  {
         const idSplit = props.match.params.id.split(",");
-        setCategoryId({category: idSplit[0] , subcategory: idSplit[1]})
+        setCategoryId({category: idSplit[1] , subcategory: idSplit[0]})
         const category = await axios.get(`${MainLink}/api/v1/categories/`);
         // await axios.get("https://1d05ca9129270a.lhr.life/api/v1/products/").then(res => console.log((res.data)))
         setCategories(await category.data)
@@ -193,7 +193,7 @@ const EditProduct  = (props) => {
     // 
     return (
         <div className={styles.container}>
-        {console.log(data)}
+        {console.log(categoryId)}
             <form className={styles.main} onSubmit={submitHandler}>
                 <section className={styles.header}>
                     <h3>ویرایش محصول</h3>
@@ -215,7 +215,7 @@ const EditProduct  = (props) => {
                     <input type="text" value={data.manufacturerPrice} placeholder=" تولید کننده" name="manufacturerPrice" onChange={inputsHandler} />
                     <input type="number" value={data.purchasePrice} placeholder="قیمت خرید" name="purchasePrice" onChange={inputsHandler} />
                     <input type="file" placeholder="فایل پی دی اف"  name="pdf_file" onChange={inputsHandler} />
-                    <a className={styles.pdf} href={data.pdf_file}>دانلود فایل pdf</a>
+                    <a className={styles.pdf} href={data.pdf_file_download}>دانلود فایل pdf</a>
 
                 </section>
                 <section className={styles.textEditor}>

@@ -33,8 +33,8 @@ export default function RefundsList(props) {
             'Authorization': 'Token '+ localStorage.getItem('token'), 
         }}).then(res => setCount(res.data.count))
         if (serach === "") {
-            for (let index = 0; index < count/2; index++) {
-                paginateBtn.length < count/2 && setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
+            for (let index = 0; index < count/20; index++) {
+                paginateBtn.length < count/20 && setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
         }}else{
             if (count === 1) {
                 setPaginateBtn([0])
@@ -91,7 +91,7 @@ export default function RefundsList(props) {
                       <td>{item.user.username}</td>
                       <td>{shamsi.gregorianToJalali(item.created_at) + ""}</td>
                       {item.Confirmation ? <td style={{color: 'green'}}>تایید شده</td> : <td style={{color: 'red'}}>تایید نشده</td>}
-                      <td><button className={styles.editButton}><Link to={`/Edit-Refund_Order/${item.id}`}>ویرایش</Link></button></td>
+                      <td><Link to={`/Edit-Refund_Order/${item.id}`}><button className={styles.editButton}>ویرایش</button></Link></td>
                    </tr>)}
                    </tbody>
               </table>
