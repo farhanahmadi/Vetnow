@@ -55,6 +55,7 @@ export default function RefundsEdit(props) {
         console.log(data);
     }
    
+    const history = useHistory();
     const submitHandler = (event) =>{
         event.preventDefault()
         axios.put(`${MainLink}/api/v1/refund/update/${props.match.params.id}/` , {

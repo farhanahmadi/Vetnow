@@ -23,6 +23,7 @@ const EditNews = (props) => {
         body: '',
         created_at: '',
         author: '',
+        authorDetails: '',
         firstImg: ''
     })
     // 
@@ -38,7 +39,6 @@ const EditNews = (props) => {
     // set state kardan input ha
     const inputsHandler = (event) => {
             setData({... data , [event.target.name] : event.target.value})
-            console.log(data);
     }
     // 
 
@@ -60,6 +60,7 @@ const EditNews = (props) => {
             firstImg: inputValue.data.title_image,
             body: inputValue.data.body,
             author: inputValue.data.author.id,
+            authorDetails: inputValue.data.author,
             created_at: inputValue.data.created_at,
         })
         setEditorText(inputValue.data.body);
@@ -121,7 +122,6 @@ const EditNews = (props) => {
     // 
     return (
         <div className={styles.container}>
-            {console.log(data)}
             <form className={styles.main} onSubmit={submitHandler}>
                 <section className={styles.header}>
                     <h3>ایجاد اخبار</h3>
@@ -137,8 +137,8 @@ const EditNews = (props) => {
                         data={editorText}
                         />
                     <select  onChange={e => userHandler(e)}>
-                        <option value={data.author} selected hidden >انتخاب کاربر (پیش فرض : شما)</option>
-                        {admins.map(item => <option key={item.id} value={item.id}>{item.username}</option>)}
+                        <option value={data.author} hidden >{`${data.authorDetails.first_name} ${data.authorDetails.last_name}`}</option>
+                        {admins.map(item => <option key={item.id} value={item.id}>{`${item.first_name} ${item.last_name}`}</option>)}
                     </select>
                 </section>
                 <section className={styles.textEditor}>
