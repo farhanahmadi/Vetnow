@@ -4,6 +4,9 @@ import styles from "../../styles/EditReturnedOrder.module.css"
 import Sidebar from '../Sidebar'
 import { MainLink } from '../Link/MainLink';
 import * as shamsi from 'shamsi-date-converter';
+import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function RefundsEdit(props) {
@@ -58,7 +61,15 @@ export default function RefundsEdit(props) {
             Confirmation: data.confirmation,
         },{ headers:{
             'Authorization': 'Token '+ localStorage.getItem('token'), 
-        }}).then(res => console.log(res))
+        }}).then(response => {if (response) {
+            toast.success("عملیات با موفقیت ویرایش شد")
+            setTimeout(() => {
+                history.push(`/Refunds-List`)
+            },5000)
+        }})
+        .catch(error =>{
+            toast.error("لطفا دوباره تلاش کنید")
+        });
     }
     
     return (
@@ -139,6 +150,7 @@ export default function RefundsEdit(props) {
         <section className={styles.sidebar}>
          <Sidebar  />
         </section>
+        <ToastContainer />
     </div>
     )
 }

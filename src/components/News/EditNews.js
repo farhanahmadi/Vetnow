@@ -98,7 +98,7 @@ const EditNews = (props) => {
         data.firstImg  && photo && formD.append('title_image' , photo , photo.name) 
         formD.append('title' , data.title)
         formD.append('body	' , data.body)
-        formD.append('created_at' , data.created_at)
+        // formD.append('created_at' , data.created_at)
         formD.append('author' , data.author)
         fetch(`${MainLink}/api/v1/news/update/${props.match.params.slug}/`,{
             
@@ -107,7 +107,8 @@ const EditNews = (props) => {
                 'Authorization': 'Token '+ localStorage.getItem('token'), 
             }),
             body:formD,
-        }).then(response => {if (response) {
+        })
+        .then(response => {if (response) {
             toast.success("اخبار با موفقیت ویرایش شد")
             setTimeout(() => {
                 history.push(`/NewsList`)
@@ -120,12 +121,13 @@ const EditNews = (props) => {
     // 
     return (
         <div className={styles.container}>
+            {console.log(data)}
             <form className={styles.main} onSubmit={submitHandler}>
                 <section className={styles.header}>
                     <h3>ایجاد اخبار</h3>
                 </section>
                 <section className={styles.inputs} dir='rtl'>
-                    <input type="text" value={data.title} placeholder="نام محصول" name="title" onChange={inputsHandler} />
+                    <input type="text" value={data.title} placeholder="تیتر خبر" name="title" onChange={inputsHandler} />
                     <CKEditor className={styles.editor}
                         editor={ClassicEditor}
                         config={{
@@ -135,7 +137,7 @@ const EditNews = (props) => {
                         data={editorText}
                         />
                     <select  onChange={e => userHandler(e)}>
-                        <option selected >{data.username}</option>
+                        <option value={data.author} selected hidden >انتخاب کاربر (پیش فرض : شما)</option>
                         {admins.map(item => <option key={item.id} value={item.id}>{item.username}</option>)}
                     </select>
                 </section>
