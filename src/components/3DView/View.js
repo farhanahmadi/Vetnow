@@ -113,7 +113,6 @@ const View = (props) => {
 
   // baraye inke input hide shode az tarig div karkone
   const uploadHandler = (ref) => {
-    console.log(ref);
     ref.current.click();
   };
   //
@@ -224,7 +223,7 @@ const View = (props) => {
       },
       method: "POST",
       body: formD,
-    }).then((res) => console.log(res));
+    })
   };
   //
   return (

@@ -36,7 +36,6 @@ const AddNews = () => {
     // set state kardan input ha
     const inputsHandler = (event) => {
             setData({... data , [event.target.name] : event.target.value})
-            console.log(data);
         }
     // 
     // 
@@ -87,7 +86,6 @@ const AddNews = () => {
         formD.append('title' , data.title)
         formD.append('body' , data.body)
         formD.append('author' , data.author)
-        console.log(formD);
         fetch(createNewsLINK,{
             
             method:"POST",

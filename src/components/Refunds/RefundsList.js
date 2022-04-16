@@ -45,7 +45,6 @@ export default function RefundsList(props) {
                 setExtraPaginateBtn(true)
                 for (let index = 0; index < Math.ceil(count/2); index++) {
                     setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
-                console.log(count);
 
         }}
         
@@ -55,7 +54,6 @@ export default function RefundsList(props) {
   const clickHandler = (number) =>{
       setPaginate(number.target.id);
       setId(number.target.id);
-      console.log(id);
   }
   const searchHandler = (event) =>{
     setSearch(event.target.value)

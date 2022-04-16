@@ -45,7 +45,6 @@ export default function DiscountList() {
     const clickHandler = (number) =>{
         setPaginate(number.target.id);
         setId(number.target.id);
-        console.log(id);
     }
  
 

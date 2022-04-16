@@ -51,12 +51,10 @@ const AddUser = () => {
          }else{
             setAvatar(event.target.files[0])
          }
-         console.log(data);
         }
     // 
     const checkBoxHandler = (event) => {
         setData({...data , [event.target.name] : event.target.checked})
-        console.log(data);
        }
 
        // set kardan img ha dar state ha 
@@ -125,7 +123,6 @@ const AddUser = () => {
         formD.append('zip_code' , data.zip_code)
         formD.append('full_name' , data.full_name)
         formD.append('phone_number' , data.phone_number)
-        console.log(formD);
         fetch(`${MainLink}/api/v1/user/create/`,{
             headers:{
                 'Authorization': 'Token '+ localStorage.getItem('token'), 

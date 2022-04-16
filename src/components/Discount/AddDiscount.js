@@ -27,7 +27,6 @@ export default function AddDiscount() {
     const categoryHandler = (e) =>{
         data.product.push(...e.map(item => item.id))
         setNumber(Math.random())
-        console.log(data.product);
 
     }
     const inputHandler =(event) =>{
@@ -64,24 +63,17 @@ export default function AddDiscount() {
             </section>
             <br />
             <section className={styles.inputs} dir='rtl'>
-                {/* <select  onChange={e => categoryHandler(e)}> */}
-                   {/* <option selected value="" >انتخاب محصول </option>
-                   {products.map(item => <option name="category" key={item.id} defaultValue="null" value={item.id}>{item.name}</option>)} */}
-                {/* </select> */}
                 <Multiselect 
-                    options={products} // Options to display in the dropdown
-                    // selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
-                    onSelect={categoryHandler} // Function will trigger on select event
-                    // onRemove={this.onRemove} // Function will trigger on remove event
-                    displayValue="name" // Property name to display in the dropdown options
-                    // onChange={(e) => {AddProductHandler(e)}}
+                    options={products}
+                    onSelect={categoryHandler} 
+                    displayValue="name"
                     />
                 <input type="text" value={data.discountPercent} placeholder="درصد تخفیف را وارد کنید" name="discountPercent" onChange={inputHandler} />
-                <input type="text" value={data.valid_from} placeholder="تاریخ شروع تاریخ" name="valid_from" onChange={inputHandler} />
-                <input type="text" value={data.valid_to} placeholder="تاریخ پایان تخفیف" name="valid_to" onChange={inputHandler} />
+                <input type="text" value={data.valid_from} placeholder="تاریخ شروع مثال (10-10-1401)" name="valid_from" onChange={inputHandler} />
+                <input type="text" value={data.valid_to} placeholder="تاریخ پایان مثال (10-10-1402)" name="valid_to" onChange={inputHandler} />
             </section>
             <br />
-            <input className={styles.submitBtn} type="submit" value="ثبت دسته تخفیف " />
+            <input className={styles.submitBtn} type="submit" value="ثبت تخفیف " />
         </form>
         <section className={styles.sidebar}>
          <Sidebar  />

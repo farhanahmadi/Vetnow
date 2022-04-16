@@ -80,7 +80,6 @@ const EditUser = (props) => {
             
         })
         setPhoto(await inputValue.data.avatar)
-        await console.log(inputValue);
     }, [])
     // 
      // set state kardan input ha
@@ -90,12 +89,10 @@ const EditUser = (props) => {
          }else{
             avatar(event.target.files[0])
          }
-         console.log(data);
         }
     // 
     const checkBoxHandler = (event) => {
         setData({...data , [event.target.name] : event.target.checked})
-        console.log(data);
        }
 
 

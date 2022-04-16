@@ -49,7 +49,6 @@ const AddProduct = () => {
     const inputsHandler = (event) => {
         if (event.target.name !== "pdffile") {
             setData({... data , [event.target.name] : event.target.value})
-            console.log(data);
         }else{
             setPdf(event.target.files[0])
             setData({...data, pdffile: event.target.files[0]})
@@ -61,12 +60,9 @@ const AddProduct = () => {
      const categoryHandler = (e) =>{ 
         setSubcategory([categories.find(item => item.id == e.target.value)])
         setData({...data ,category: [e.target.value]})
-        console.log(data.category);
-        // console.log(categories.find(item => item.id == e.target.value));
     }
     const subCategoryHandler = (e) =>{ 
         setData({...data , subcategory: [e.target.value]})
-        console.log(data.subcategory);
     }
     // 
     // set state kardan tinymce 
@@ -134,7 +130,6 @@ const AddProduct = () => {
         formD.append('company_price' , data.purchasePrice)
         formD.append('manufacturer_company' , data.manufacturerPrice)
         data.pdffile && formD.append('pdf_file' , pdf , pdf.name)
-        console.log(formD);
         fetch(createProductLINK,{
             headers:{
                 'Authorization': 'Token '+ localStorage.getItem('token'), 

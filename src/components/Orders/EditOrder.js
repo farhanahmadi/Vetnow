@@ -68,7 +68,6 @@ export default function EditOrder(props) {
 
     const inputHandler = (event) =>{
         setData({...data , confirmation: event.target.checked})
-        console.log(data);
     }
    
     const submitHandler = (event) =>{
@@ -92,7 +91,6 @@ export default function EditOrder(props) {
                 <h3>ویرایش  سفارشات</h3>
             </section>
             <br />
-            {console.log(data.products)}
                 {data.products.map(item => 
                      <section key={item.id} className={styles.productsDetails}>
                      <section className={styles.labelSection}>

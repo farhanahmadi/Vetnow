@@ -48,7 +48,6 @@ const Users = () => {
                     setExtraPaginateBtn(true)
                     for (let index = 0; index < Math.ceil(count/20); index++) {
                         setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
-                    console.log(count);
 
             }}
             

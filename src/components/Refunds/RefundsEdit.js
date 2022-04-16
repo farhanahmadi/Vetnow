@@ -52,7 +52,6 @@ export default function RefundsEdit(props) {
         },[])
     const inputHandler = (event) =>{
         setData({...data , confirmation: event.target.checked})
-        console.log(data);
     }
    
     const history = useHistory();

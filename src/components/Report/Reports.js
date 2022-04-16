@@ -52,7 +52,6 @@ export default function Reports() {
 
     const inputsHandler = (event) =>{
         setData({...data , [event.target.name] : event.target.value})
-        console.log(data);
     }
     
 
@@ -102,7 +101,7 @@ export default function Reports() {
                     <select  onChange={e => categoryHandler(e)}>
                         <option value="null">دسته بندی</option>
                         {/* {category.map(item => <option key={item.id} value={item.slug}>{item.name}</option>)} */}
-                        {category.map(item => item.parent.length > 0 && <option key={item.id} value={item.id}>{item.name}</option>)}
+                        {category.map(item => item.parent.length > 0 && <option key={item.id} value={item.name}>{item.name}</option>)}
                     </select>
                     {categorySell.gains && <p>سود از فروش {categorySell.gains}</p>}
                     

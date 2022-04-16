@@ -41,7 +41,6 @@ const BarChart = () => {
         .then((response) => {
           if (response.ok) {
             response.json().then((json) => {
-              // console.log(json[Months[0]]);
               for (let index = 0; index < Months.length; index++) {
                chart.length < 12 && setChart(prevstate => [...prevstate , json[Months[index]].amount__sum])
               }

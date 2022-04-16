@@ -38,7 +38,6 @@ export default function EditDiscount(props) {
     const AddProductHandler = (e) =>{
         data.productId.push(...e.map(item => item.id))
         setNumber(Math.random())
-        console.log(data.productId);
 
     }
     const DeleteProductHandler = (e) =>{
@@ -81,18 +80,10 @@ export default function EditDiscount(props) {
             </section>
             <br />
             <section className={styles.inputs} dir='rtl'>
-                {/* <select  onChange={e => AddProductHandler(e)}>
-                    <option selected >افزردن محصول برای تخفیف</option>
-                    {products.map(item => <option name="products" key={item.id} value={item.id}>{item.name}</option> )}
-                    {data.productId.length > 0 && console.log(data.productId)}
-                </select> */}
                <Multiselect 
-                    options={products} // Options to display in the dropdown
-                    // selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
-                    onSelect={AddProductHandler} // Function will trigger on select event
-                    // onRemove={this.onRemove} // Function will trigger on remove event
-                    displayValue="name" // Property name to display in the dropdown options
-                    // onChange={(e) => {AddProductHandler(e)}}
+                    options={products}
+                    onSelect={AddProductHandler}
+                    displayValue="name"
                     />
                 <select  onChange={e => DeleteProductHandler(e)}>
                     <option selected >حذف محصول از تخفیف ها</option>
@@ -106,7 +97,7 @@ export default function EditDiscount(props) {
                 <input type="text" value={data.valid_to} placeholder="تاریخ پایان تخفیف" name="valid_to" onChange={inputHandler} />
             </section>
             <br />
-            <input className={styles.submitBtn} type="submit" value="ثبت دسته بندی " />
+            <input className={styles.submitBtn} type="submit" value=" ثبت تخفیف " />
         </form>
         <section className={styles.sidebar}>
          <Sidebar  />

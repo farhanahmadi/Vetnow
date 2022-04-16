@@ -15,7 +15,6 @@ const Login = () => {
 
     const inputHandler = (event) =>{
         setNumber(event.target.value)
-        console.log(number);
     }
 
     useEffect(() => {
@@ -33,7 +32,6 @@ const Login = () => {
         }}).catch((error) => {
             if(error.response){
               toast.error(error.response.data.phone_number.toString())
-            //   console.log(error.response.data.phone_number.toString());
             }
         });
 

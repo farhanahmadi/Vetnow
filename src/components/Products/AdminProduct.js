@@ -47,7 +47,6 @@ const AdminProduct = () => {
                     paginateBtn.length == 0 && setExtraPaginateBtn(true)
                     for (let index = 0; index < count/20; index++) {
                         setPaginateBtn((prevstate) => [...new Set([...prevstate , index])])
-                    console.log(count);
 
             }}
             
@@ -57,7 +56,6 @@ const AdminProduct = () => {
     const clickHandler = (number) =>{
         setPaginate(number.target.id);
         setId(number.target.id);
-        console.log(id);
     }
     const searchHandler = (event) =>{
         setSearch(event.target.value)

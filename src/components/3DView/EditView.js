@@ -156,7 +156,6 @@ const EditView = (props) => {
 
   // baraye inke input hide shode az tarig div karkone
   const uploadHandler = (ref) => {
-    console.log(ref);
     ref.current.click();
   };
   //
@@ -267,7 +266,7 @@ const EditView = (props) => {
         method: "put",
         body: formD,
       }
-    ).then((res) => console.log(res));
+    )
   };
   //
   return (

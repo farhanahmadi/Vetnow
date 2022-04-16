@@ -16,7 +16,6 @@ const EditParentCategory = () => {
 
     useEffect( async () =>{
         await axios.get(`${MainLink}/api/v1/categories/`).then(res => setCategory(res.data))
-        console.log(category);
 
     },[])
     const categoryHandler = (e) =>{
@@ -48,7 +47,6 @@ const EditParentCategory = () => {
         });
     }
     const categoryDeleteHandler =(slug) =>{
-        console.log(slug);
         axios.delete(`${MainLink}/api/v1/category/delete/${slug}/`)
     }
     return (

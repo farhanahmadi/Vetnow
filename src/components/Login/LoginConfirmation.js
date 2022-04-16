@@ -18,7 +18,6 @@ const LoginConfirmation = () => {
     })
     const inputHandler = (event) =>{
         setData({...data , key: localStorage.getItem('key') , password :event.target.value})
-        console.log(data);
     }
 
     const redirect = new useHistory();

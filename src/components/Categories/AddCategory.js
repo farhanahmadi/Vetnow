@@ -21,7 +21,6 @@ const AddCategory = () => {
   }, []);
   const categoryHandler = (e) => {
     setData({ ...data, parent: e.target.value });
-    console.log(data);
   };
   const inputHandler = (event) => {
     setData({ ...data, subcategoryName: event.target.value });

@@ -67,7 +67,6 @@ const EditProduct  = (props) => {
      // gereftan value selected option baraye gereftan zirshaxe ha
      const categoryHandler = (e) =>{ 
         setSubcategory([categories.find(data => data.id == e.target.value)])
-        console.log(e.target.value);
         setData({...data ,category: [e.target.value]})
     }
     const subCategoryHandler = (e) =>{ 
@@ -111,10 +110,7 @@ const EditProduct  = (props) => {
         const idSplit = props.match.params.id.split(",");
         setCategoryId({category: idSplit[1] , subcategory: idSplit[0]})
         const category = await axios.get(`${MainLink}/api/v1/categories/`);
-        // await axios.get("https://1d05ca9129270a.lhr.life/api/v1/products/").then(res => console.log((res.data)))
         setCategories(await category.data)
-        // setSubcategory(await [category.data[props.match.params.id[categoryId] - 1].parent.find(item => item.id === subCategoryId - 1)])
-        // console.log(category.data[[categoryId.category] - 1]);
     }, [])
     // 
     // set kardan img ha dar state ha 
@@ -193,7 +189,6 @@ const EditProduct  = (props) => {
     // 
     return (
         <div className={styles.container}>
-        {console.log(categoryId)}
             <form className={styles.main} onSubmit={submitHandler}>
                 <section className={styles.header}>
                     <h3>ویرایش محصول</h3>

@@ -36,7 +36,6 @@ const EditCategory = (props) => {
     },[])
     const categoryHandler = (e) =>{
         setData({... data , parent: e.target.value})
-        console.log(data);
 
     }
     const inputHandler =(event) =>{
@@ -68,7 +67,6 @@ const EditCategory = (props) => {
     }
     return (
         <div className={styles.container}>
-            {console.log(category)}
         <form className={styles.main} onSubmit={submitHandler}>
             <section className={styles.header}>
                 <h3>ویرایش دسته بندی</h3>
