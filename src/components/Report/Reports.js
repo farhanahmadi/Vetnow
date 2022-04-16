@@ -60,7 +60,7 @@ export default function Reports() {
         if (data.startDate.length > 0) {
             setCategorySell({...categorySell , gains: ''})
             axios.post(`${MainLink}/api/v1/gains/` ,{
-                slug: data.category,
+                slug: data.category.split(' ').join('-'),
                 date_start: data.startDate,
                 date_end: data.endDate
             },{ headers:{
@@ -70,7 +70,7 @@ export default function Reports() {
                 total_sells_per_month: response.data.total_sells_per_month,
             }))
         }else{
-            axios.get(`${MainLink}/api/v1/gains/${data.category}/`).then(response => setCategorySell({...data, gains: response.data.gains}))
+            axios.get(`${MainLink}/api/v1/gains/${data.category.split(' ').join('-')}/`).then(response => setCategorySell({...data, gains: response.data.gains}))
         }
     }   
 
